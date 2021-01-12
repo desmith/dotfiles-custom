@@ -1,0 +1,24 @@
+### Change the autocomplete key
+
+One thing I don’t like about the autocomplete option is that sometimes they go against you. You are typing your piece of code and when you type Enter or tab, suddenly you get a non-desired function written there. This is why I’m going to explain how you can change that in Sublime Text 3 🙂
+
+We are going to let the autocomplete option only when tab is pressed, and not Enter. Go to Sublime Text –> Preferences –> Key Bindings – User and add the following:
+
+[
+    { “keys”: [“enter”], “command”: “commit_completion”, “context”:
+        [
+            { “key”: “auto_complete_visible” },
+            { “key”: “setting.auto_complete_commit_on_tab”, “operand”: false }
+        ]
+    },
+]
+
+Next, go to Sublime Text –> Preferences –> Settings – User and add:
+
+{
+“auto_complete_commit_on_tab”: true,
+}
+
+Close and open Sublime Text and now, only when you press the tab key, you will autocomplete your functions!
+
+Autocomplete Tip: When you are writing your models in Django, if you simply write Model and press tab (or enter if you didn’t change the autocomplete), a template for a new model will appar. Nice!

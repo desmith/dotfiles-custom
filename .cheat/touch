@@ -1,0 +1,11 @@
+# Change the “date modified” attribute of a file
+
+touch -mt 201707291338 <filename>
+
+# Change the “date created” attribute of a file
+# The following example represents "January 12, 2008 at 12:00 AM"
+touch -t 200801120000 <filename>
+
+# Example
+touch -mt 201707291338 /Volumes/Vimana128/DCIM/100MEDIA/DJI_0116.MOV
+touch -t 201707291338 /Volumes/Vimana128/DCIM/100MEDIA/DJI_0116.MOV

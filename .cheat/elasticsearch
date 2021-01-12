@@ -1,0 +1,59 @@
+# After you install elasticsearch in Ubuntu 16.04 (using apt install elasticsearch), you may notice it doesn't run.
+
+$ systemctl start elasticsearch       
+$ service elasticsearch status       
+#● elasticsearch.service - LSB: Starts elasticsearch
+#   Loaded: loaded (/etc/init.d/elasticsearch; bad; vendor preset: enabled)
+#   Active: active (exited) since Sun 2016-08-14 13:53:08 UTC; 6min ago
+#     Docs: man:systemd-sysv-generator(8)
+#  Process: 26539 ExecStop=/etc/init.d/elasticsearch stop (code=exited, status=0/SUCCESS)
+#  Process: 26592 ExecStart=/etc/init.d/elasticsearch start (code=exited, status=0/SUCCESS)
+
+#Aug 14 13:53:08 web3 systemd[1]: Starting LSB: Starts elasticsearch...
+#Aug 14 13:53:08 web3 systemd[1]: Started LSB: Starts elasticsearch.
+#Aug 14 13:56:18 web3 systemd[1]: Started LSB: Starts elasticsearch.
+#Aug 14 13:59:28 web3 systemd[1]: Started LSB: Starts elasticsearch.
+#Nothing interesting in the logs, but definitely the process is not running.
+#How to solve the problem?
+
+### *  in /etc/default/elasticsearch, make sure these are uncommented:
+
+START_DAEMON=true
+ES_USER=elasticsearch
+ES_GROUP=elasticsearch
+LOG_DIR=/var/log/elasticsearch
+DATA_DIR=/var/lib/elasticsearch
+WORK_DIR=/tmp/elasticsearch
+CONF_DIR=/etc/elasticsearch
+CONF_FILE=/etc/elasticsearch/elasticsearch.yml
+RESTART_ON_UPGRADE=true
+
+# *  make sure /var/lib/elasticsearch is owned by elasticsearch user:
+chown -R elasticsearch:elasticsearch /var/lib/elasticsearch/
+
+# After that, elasticsearch should start properly.
+
+### The delete index API allows to delete an existing index.
+
+curl -XDELETE 'http://localhost:9200/<index>/'
+
+
+curl -XDELETE 'http://localhost:9200/inews/'
+curl -XDELETE 'http://localhost:9200/lawbook/'
+curl -XDELETE 'http://localhost:9200/mgsanga/'
+
+curl -XGET 'http://localhost:9200/_count?pretty' -d '
+{ "query": { "match_all": {} } } '
+
+# get es health
+curl -XGET 'http://localhost:9200'
+curl -XGET 'localhost:9200/_count?pretty'
+
+curl -XGET 'localhost:9200/<index>/?pretty'
+curl -XGET 'http://localhost:9200/inews-articles/?pretty'
+curl -XGET 'http://127.0.0.1:9200/inews-articles/?pretty'
+
+# list all indices
+curl -XGET localhost:9200/_cat/indices/
+
+

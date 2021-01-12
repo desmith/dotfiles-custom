@@ -1,0 +1,5 @@
+### Default TTLs
+Min TTL: 0
+Max TTL: 31536000
+Default: 86400
+

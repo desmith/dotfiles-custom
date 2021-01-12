@@ -1,0 +1,27 @@
+### connect to host (other than default localhost)
+redis-cli -h redis-01.gmesaz.0001.use1.cache.amazonaws.com -p 6379 ping
+
+inews[0]:
+redis-cli -h redis-01.gmesaz.0001.use1.cache.amazonaws.com -p 6379
+
+lawbook[1]:
+redis-cli -h redis-01.gmesaz.0001.use1.cache.amazonaws.com
+
+mgsanga[2]:
+redis-cli -h redis-01.gmesaz.0001.use1.cache.amazonaws.com:6379/2
+
+see what keys are present
+keys *
+
+### get info on keyspace
+info keyspace
+
+### real-time view of activity
+monitor
+
+### Remove all keys from all databases
+redis-cli flushall
+
+### Remove all keys from current database
+flushdb
+

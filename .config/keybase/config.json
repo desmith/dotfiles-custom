@@ -1,0 +1,11 @@
+{
+    "current_user": "peacock",
+    "users": {
+        "peacock": {
+            "device": null,
+            "id": "a095c7713e337faa7c397ce5fc77ed19",
+            "name": "peacock",
+            "salt": "56eb5b2795fdd3c759811115df8af83d"
+        }
+    }
+}

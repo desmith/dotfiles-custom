@@ -1,0 +1,9 @@
+### Code Styling:
+
+    All database fields
+    Custom manager attributes
+    class Meta
+    def __str__()
+    def save()
+    def get_absolute_url()
+    Any custom methods

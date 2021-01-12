@@ -1,0 +1,9 @@
+### From: https://docs.pycom.io/pytrackpysense/installation/firmware/
+
+# Get latest firmware:
+https://software.pycom.io/findupgrade?key=pysense.dfu&type=all&redirect=true
+
+# install dfu utils:
+brew install dfu-util
+
+dfu-util -D pytrack_0.0.8.dfu

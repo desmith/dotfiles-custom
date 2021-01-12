@@ -1,0 +1,3 @@
+### Repartition an external USB disk 
+diskutil erasedisk hfs+ External GPT /dev/disk3
+

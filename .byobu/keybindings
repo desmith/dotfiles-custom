@@ -1,0 +1,6 @@
+source /usr/share/byobu/keybindings/screen-escape-keys
+escape ^Aa
+register r "^a:source $HOME/.byobu/profile"
+register t "^aA^aa^k^h"
+register d "^a:source /usr/share/byobu/keybindings/screen-escape-keys"
+register e "^a:source /usr/share/byobu/keybindings/f-keys"

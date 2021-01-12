@@ -1,0 +1,19 @@
+##
+# Cache Settings
+##
+
+etag on;
+if_modified_since exact;
+add_header Pragma public;
+add_header Cache-Control "no-cache, public, must-revalidate";
+
+# Expires map
+map $sent_http_content_type $expires {
+  default                    off;
+  text/html                  24h;
+  text/css                   max;
+  application/javascript     max;
+  ~image/                    max;
+}
+
+expires $expires;

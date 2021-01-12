@@ -1,0 +1,167 @@
+"set fdm=marker fdl=0 fdc=3 vb t_vb=
+
+"" for wildcard matching:
+" do it the linux way
+" set wildmode=longest,list
+" do it *my* way... because cool!
+"set wildmode=longest:full
+set wildmode=full
+set wildmenu
+
+"" sometimes works... sometimes doesn't...
+"" but either way, i decided that i don't like it!
+"set mouse=a
+
+
+" let me see the special characters... tabs, trailing spaces, wrapped lines
+" might want to set nolist if on a monochrome console...
+"set lcs=tab:>-,trail:.,extends:$
+set nolist
+
+"" highlighted search
+set hlsearch
+set incsearch
+
+
+"----- allow us to backspace before an insert
+" not quite the same as classic vi
+set backspace=2
+
+set backup
+set backupext=.bak
+set backupdir=~/tmp/.vimbak
+set directory=~/tmp/.vimbak
+"set patchmode=.orig
+
+"" when inserting TABs replace them with the appropriate
+"" number of spaces  (literal tabs can be done with ^V,^I)
+
+"" Give me a nice little bar... containing file name and position
+set laststatus=2  " always have a status line for the last file
+set ruler         " show the line and column number of the cursor
+set cmdheight=2   " number of screen lines to use for command line
+
+"" and let me see those `invisible' commands, already!!!
+set showcmd
+
+"" match parenthasis, /very/ important (epecially for programming)
+set showmatch
+
+
+"----- set up the stuff for color highlighing in an xterm
+" very very very important.  :^)  (is it always necessary? i don't know)
+"if &term =~ "xterm"
+ if has("terminfo")
+  set t_Co=16
+"  set t_Sf=[3%p1%dm
+"  set t_Sb=[4%p1%dm
+"  set t_vb=
+ else
+  set t_Co=16
+"  set t_Sf=[3%dm
+"  set t_Sb=[4%dm
+"  set t_vb=
+ endif
+"endif
+
+"" why in the world would i ever want to turn off syntax highlighting!?!?!?!?
+"" huh??? i mean, get real!  syntax highlighting is essential! . . .
+"" and yet, if i should ever want to turn it off... just press <F9>
+"  hmmm.... a fun side benefit, if i am all out of coins to flip, i can hold
+"  down <F9> and guess whether it will end up highlighted or not when i let go
+"  . . . or I could just hold it down and look and the pretty wirds `jumping'
+"  on the screen.... ;^)
+"nmap <F9> :if has("syntax_items")<CR>syntax off<CR>else<CR>syntax on<CR>endif<CR><CR>
+
+
+" moves to top of paragraph, then inserts tab
+"map   {j:le
+"map!  {j:le
+
+"map   {!}fmt -uw 72
+"}
+"map!  {!}fmt -uw 72
+"}A
+
+
+map <F3> :%s//gc<Left><Left><Left>
+map <S-F3> :%s/<C-r><C-w>//gc<Left><Left><Left>
+
+vmap / y:execute "/".escape(@",'[]/\.*')<CR>
+vmap <F3> y:execute "%s/".escape(@",'[]/')."//gc"<Left><Left><Left><Left>
+
+
+"okay, it seems to miss some of the C++ files
+autocmd BufRead *.c,*.h,*.cpp,*.C,*.cxx set formatoptions=croql cindent comments=sr:/*,mb:*,el:*/,://
+
+:map! @! 
+@Bi:r! F:"adt@mm@ais"bd$dd`m@b
+:map! @@ 
+@F@xi:r! F:"adt@mm@ais"bd$dd`m@b
+:map \w :!is
+
+:map! \w :!is
+
+map! \w :!is
+
+
+map \fm :so ~/.vim/browse.vim
+
+map!  \fn function newGizmo() {<CR><CR>}<CR><Esc><Up><Up>i<Tab>
+map!  fn function newGizmo() {<CR><CR>}<CR><Esc><Up><Up>i<Tab>
+:map  fn ifunction newGizmo() {<CR><CR>}<CR><Esc><Up><Up>i<Tab>
+:map  \fn ifunction newGizmo() {<CR><CR>}<CR><Esc><Up><Up>i<Tab>
+
+"trying to color our world...
+"set term=builtin_beos-ansi
+set term=ansi
+
+  if !has("gui") && has("terminfo")
+    set t_Co=16
+    set t_AB=[%?%p1%{8}%<%t%p1%{40}%+%e%p1%{92}%+%;%dm
+    set t_AF=[%?%p1%{8}%<%t%p1%{30}%+%e%p1%{82}%+%;%dm
+  else
+    set t_Co=16
+    set t_Sf=[3%dm
+    set t_Sb=[4%dm
+  endif
+
+set title
+set paste
+
+set ai
+set ts=4
+set nu
+
+" change some options for mail (for mutt, pine, elm, trn and rn)
+au BufNewFile,BufRead snd.*,.letter,.followup,.article,.article.[0-9]\+,pico.[0-9]\+,mutt*[0-9]          set noautoindent
+au BufNewFile,BufRead snd.*,.letter,.followup,.article,.article.[0-9]\+,pico.[0-9]\+,mutt*[0-9]          set nosmartindent
+au BufNewFile,BufRead snd.*,.letter,.followup,.article,.article.[0-9]\+,pico.[0-9]\+,mutt*[0-9]          set textwidth=70
+au BufNewFile,BufRead snd.*,.letter,.followup,.article,.article.[0-9]\+,pico.[0-9]\+,mutt*[0-9]          vnoremap C c...<clip>...
+
+" match all of my (specially named) muttrc files
+au BufNewFile,BufRead *muttrc*       so $VIMRUNTIME/syntax/muttrc.vim
+au BufNewFile,BufRead aliases       so $VIMRUNTIME/syntax/muttrc.vim
+
+"svn (subversion) syntax highlighting
+au BufNewFile,BufRead  svn-commit.* setf svn
+
+"" let's adjust some colours
+let mysyntaxfile = "~/.vim/syntax.vim"
+set background=dark
+colorscheme myne
+
+" possibly *the* most important lines in the entire file
+syntax on
+filetype on
+
+"" C-style indenting
+set cindent
+set shiftwidth=4
+
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set autoindent
+set smartindent
+

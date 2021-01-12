@@ -1,0 +1,47 @@
+### retrieve instance zone
+curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone
+# retrieve instance variables
+INSTANCE_ID=$(curl -fsq http://169.254.169.254/latest/meta-data/instance-id)
+LOCAL_IPV4=$(curl -fsq http://169.254.169.254/latest/meta-data/local-ipv4)
+HOSTNAME_LOCAL=$(curl -fsq http://169.254.169.254/latest/meta-data/local-hostname)
+REGION=$(curl -fsq http://169.254.169.254/latest/meta-data/placement/availability-zone |  sed 's/[a-z]$//')
+
+# Append local ip and host to /etc/hosts
+echo "$LOCAL_IPV4 $HOSTNAME_LOCAL" >> /etc/hosts
+
+# Install awscli tools
+aws configure set default.region $REGION
+sudo -u ec2-user aws configure set default.region $REGION
+
+# Set the 'Name' tag on the instance
+MYHOSTNAME=$EIP_NAME-$LOCAL_IPV4
+aws ec2 create-tags --tags "Key=Name,Value=$MYHOSTNAME" --resources $INSTANCE_ID
+
+# Get and Set Elastic IP address
+EIP_ID=$(aws ec2 describe-tags --filter "Name=resource-type,Values=elastic-ip" "Name=value,Values=$EIP_NAME" --output=text | cut -f3)
+if [[ ! -z {$EIP_ID+x} ]]; then
+  aws ec2 associate-address --instance-id $INSTANCE_ID --allocation-id $EIP_ID --allow-reassociation;
+fi
+
+# moving files
+aws s3 mv myDir s3://mybucket/ --recursive
+
+# move with exclusions
+aws s3 mv myDir s3://mybucket/ --recursive --exclude "*.jpg"
+
+# When passed with the parameter --recursive, the following mv command recursively moves all objects under a specified bucket to another bucket while excluding some objects by using an --exclude parameter. 
+
+aws s3 mv s3://mybucket/ s3://mybucket2/ --recursive --exclude "mybucket/another/*"
+
+aws s3 sync --exclude "*.DS_Store*" ./ s3://bucket/
+
+# Restore objects from S3 glacier
+aws s3 ls --recursive s3://<bucket_name> | awk '{print $4}' | xargs -L 1 aws s3api restore-object --restore-request Days=<days> --bucket <bucket_name> --key
+
+# retrieve hosted zone records
+aws route53 list-resource-record-sets --hosted-zone-id hosted-zone-id > path-to-output-file
+
+# To create new zone records
+aws route53 change-resource-record-sets --hosted-zone-id hosted-zone-id --change-batch file://path-to-file-that-contains-records
+
+

@@ -1,0 +1,26 @@
+How to free some inodes:
+==========================
+- Check the count of inode for the / (root) fierl system:
+
+# find inodes
+for i in /*; do echo $i; find $i |wc -l; done
+
+
+# cd /
+# find . |wc -l  -----> This will give you total inode.
+
+- Check the current utilization
+
+# find . -printf "%h\n" | cut -d/ -f-2 | sort | uniq -c | sort -rn
+
+# echo "Detailed Inode usage for: $(pwd)" ; for d in `find -maxdepth 1 -type d |cut -d\/ -f2 |grep -xv . |sort`; do c=$(find $d |wc -l) ; printf "$c\t\t- $d\n" ; done ; printf "Total: \t\t$(find $(pwd) | wc -l)\n"
+
+If all the inodes are utilized, please remove unused files and free up enough space to allocate new inodes.
+
+# cd /
+# du -sk * |sort -nr
+This above command display the output of file system utilization. You need to identify the files that you can delete.
+
+Also, if you have shortage with your inode table, you will need to free some entries by deleting unused files, or 0 sized files. You can search for those using the command:
+
+# find -not -path "proc" -size 0k

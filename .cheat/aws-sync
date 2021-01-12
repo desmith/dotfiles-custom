@@ -1,0 +1,3 @@
+Koha:
+aws s3 sync ~/.dotfiles s3://ochs-aws/dotfiles/
+aws s3 sync /etc/koha/ s3://ochs-koha/etc/koha/

@@ -1,0 +1,13 @@
+### Eject CD/DVD
+/usr/bin/drutil eject
+
+Usage: createInstallerUSB <device>
+
+Example: createInstallerUSB /Volumes/SanDiskRed-8GB
+
+
+### To use Touch Bar with Touch ID?
+edit /etc/pam.d/sudo and add the following line to the top:
+
+auth sufficient pam_tid.so
+

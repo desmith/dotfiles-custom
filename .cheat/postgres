@@ -1,0 +1,106 @@
+### Create database:
+createdb -O iskcon -T template0 iskcon_news
+createdb -O iskcon -T template0 iskcon_news_dev
+
+createdb -O iskcon -T template0 iskcon_lawbook
+createdb -O iskcon -T template0 iskcon_lawbook_dev
+
+createdb -O iskcon -T template0 mgsanga
+createdb -O iskcon -T template0 mgsanga_dev
+
+### Create users:
+
+createuser iskcon password
+createuser iskcon password
+createuser -d -P iskcon
+createuser -d -P --interactive postgres
+createuser -d -P --interactive devaprastha
+createuser -d -P mgsanga
+
+
+### backup/restore
+pg_dump -U iskcon -Fc iskcon_news_django  > iskcon_news_django_binary_compressed.bak
+pg_restore -Fc -C -d template1 -j 8  iskcon_news_django_binary_compressed.bak
+
+### existing database:
+pg_restore -Fc -d template1 -j 8 iskcon_news_django.custom
+
+
+
+### pg_dump
+psql -U <user> -d <database> [-f <format>]
+
+
+### initialize
+initdb /usr/local/var/postgres -E utf8
+
+
+### CREATE ROLES AND DATABASES
+
+### Dump data
+postgres@db02: pg_dump mgsanga_django > mgsanga.dump
+
+
+### WHILE LOGGED IN ###
+
+### Create Users
+postgres=#  CREATE ROLE postgres password '';
+postgres=#  CREATE ROLE mgsanga password '';
+postgres=#  ALTER ROLE mgsanga LOGIN;
+
+### Create Database
+postgres=#  CREATE DATABASE mgsanga_django WITH OWNER mgsanga;
+postgres=#  GRANT ALL PRIVILEGES ON DATABASE mgsanga_django TO mgsanga;
+
+### Restore Data
+postgres@host: psql mgsanga_django < mgsanga.dump
+
+
+### Dump data
+postgres@db02: pg_dump iskcon_lawbook_dev > lawbook.dump
+
+### Create Users
+postgres=# CREATE ROLE iskcon password '';
+postgres=# ALTER ROLE iskcon LOGIN;
+
+### Create Database
+CREATE DATABASE dbname TEMPLATE template0;
+postgres=# CREATE DATABASE iskcon_news_django WITH OWNER iskcon;
+postgres=# GRANT ALL ON DATABASE iskcon_news_django TO iskcon;
+
+postgres=# CREATE DATABASE iskcon_lawbook_dev WITH OWNER iskcon;
+postgres=# GRANT ALL ON DATABASE iskcon_lawbook_dev TO iskcon;
+
+postgres=# CREATE ROLE lawbook password ‘***’;
+postgres=# ALTER ROLE lawbook LOGIN;
+postgres=# GRANT ALL PRIVILEGES ON DATABASE iskcon_lawbook TO lawbook;
+postgres=# GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO lawbook;
+
+postgres=# GRANT ALL PRIVILEGES ON DATABASE iskcon_lawbook  TO lawbook;
+postgres=# GRANT ALL ON ALL TABLES IN SCHEMA public to lawbook;
+postgres=# GRANT ALL ON ALL TABLES IN SCHEMA public to lawbook;
+postgres=# GRANT ALL ON ALL SEQUENCES IN SCHEMA public to lawbook;
+postgres=# GRANT ALL ON ALL FUNCTIONS IN SCHEMA public to lawbook;
+
+
+### AWS RDS
+When using Amazon RDS the user issuing the CREATE DATABASE must be a member of the role that will be the owner of the database. In my case, the superuser account I'm using is called root, and I'm going to create a role o which is going to own a database d:
+
+postgres=> CREATE ROLE o;
+CREATE ROLE
+
+postgres=> CREATE DATABASE d OWNER = o;
+ERROR:  must be member of role "o"
+
+postgres=> GRANT o TO root;
+GRANT ROLE
+
+postgres=> CREATE DATABASE d OWNER = o;
+CREATE DATABASE
+
+### Restore Data
+postgres@host: psql iskcon_lawbook_dev < lawbook.dump
+
+# Determine current open connections
+select * from pg_stat_activity where datname = 'TARGET_DB';
+

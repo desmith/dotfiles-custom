@@ -1,0 +1,9 @@
+#!/bin/bash
+# This hook is sourced after every virtualenv is activated.
+
+#export _OLD_PROMPT="$PROMPT"
+#export _OLD_RPROMPT="$RPROMPT"
+#PROMPT="%F{white}(`basename \"$VIRTUAL_ENV\"`)%f $PROMPT"
+#RPROMPT="%F{white}(%f%F{green}`basename \"$VIRTUAL_ENV\"`%f%F{white})%f $RPROMPT"
+
+export DJANGO_SETTINGS_MODULE=config.settings.local

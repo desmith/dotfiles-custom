@@ -1,0 +1,206 @@
+lftp mgsanga@ftp.mukundagoswami.org
+cd web
+cd content/
+ls
+cd 
+cd ..
+ls
+md tfd
+mkdir tfd
+cd tfd
+edit sendtfd.php
+touch !$
+lftp desmith@ftp.iskcon.com
+cd www.iskcon.org
+ls
+cd /
+ls -la
+cd ies.iskcon.com/
+ls
+cd web/
+cd content/
+vi .htaccess
+edit .htaccess
+lpwd
+lftp desmith@ftp.iskcon.com
+cd /
+ls
+cd www.iskcon.org/
+cd web/content/
+ls
+get .htaccess
+lpwd
+lcd ies.iskcon.com/
+lpwd
+pwd
+ls
+put .htaccess
+ls -la
+edit .htaccess
+set
+env
+set
+lftp desmith@ftp.iskcon.com
+cd /
+ls
+cd ies.iskcon.com/
+ls
+cd logs/
+ls
+ls -la
+cd ../content
+cd ../web
+cd content/
+ls
+put .htaccess
+lftp iskcon@ftp.iskcon.com
+cd /
+ls
+pwd
+lcd web
+ls
+cd web
+cd content
+ls
+lftp desmith@ftp.iskcon.com
+cd /
+ls
+cd ies.iskcon.com/
+ls
+cd web/
+ls
+cd content/
+la
+ls
+pwd
+lpwd
+lpwd content
+lpwd
+lcd content
+pwd
+lpwd
+mirror --delete --use-cache --verbose --allow-chown --allow-suid --no-umask --parallel=2
+lftp iesiskcon@ftp.iskcon.com
+cd /
+ls
+cd web/
+ls
+cd content/
+ls
+lftp desmith@ftp.iskcon.com
+cd /www.iskcon.com/web/content
+cd /
+ls
+cd www.iskcon.org
+cd web/content
+cd sites/all/themes/iskconnews/
+edit page.tpl.php
+edit 
+sh!
+sh
+edit page.tpl.php
+lftp desmith@ftp.iskcon.com
+cd www.iskcon.org
+lftp iskcon@ftp.iskcon.com
+cd web
+cd content
+ls
+cd sites/all/themes/
+cd iskconnews/
+chmod 775 *
+chmod -R 775 .
+ls
+chmod 775 page.tpl.php 
+ls -la page.tpl.php 
+cd ..
+chmod -R 775 .
+lftp lkdasa@ochs.org.uk
+lftp lkdasa@ftp.ochs.org.uk
+cd /www.ochs.org.uk/
+cd web
+cd content
+mkdir matt
+ls -la
+chmod 775 matt
+ls -la matt
+lftp ochsmatt@ftp.ochs.org.uk
+cd /w
+ls -la
+ls
+ls -la
+cd ..
+ls -la
+lftp desmith@ftp.iskcon.com
+cd /
+lftp desmith@ftp.iskcon.com
+cd /w
+cd /
+ls
+cd www.artofbhakti.org/
+cd web/content/
+la
+ls
+cd /www.iskconresolve.com/web/content/
+ls
+put info.php
+del info.php
+rm info.php
+lftp epubs.amazon-digital-ftp.com
+user National_Geographic
+dir
+cd National\ Geographic/
+ls
+cd 20100415/
+ls
+put 2010-April.pdf
+ls
+cd ..
+cd Traveler/
+la
+ls
+ls -la
+mkdir 20100415
+cd 20100415/
+la
+put 2010-April.pdf
+put manifest.xml
+put features.xml
+ls
+mkdir img
+mkdir features
+cd img/
+lcd img
+pwd
+lowd
+lpwd
+mput *
+ls
+mkdir logos/
+mkdir italy_cooking_school/
+cd logos/
+lcd logos
+wd
+lpowd
+pwd
+lpwd
+mput *
+ls
+cd ..
+ls
+cd italy_cooking_school/
+lcd ../
+ls
+lcd italy_cooking_school/
+lpwd
+lcd ../italy_cooking_school/
+lcd ..
+ls
+cd italy_cooking_school/
+pwd
+lpwd
+lcd img
+lcd italy_cooking_school/
+lpwd
+cd ..
+ls
+lpwd

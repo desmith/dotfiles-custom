@@ -1,0 +1,17 @@
+Goto Anything lets you open any file in a project with just a few keystrokes—it's undeniably one of Sublime's best features. 
+
+But it gets better.
+
+You can combine Sublime's file-specific Goto commands like Goto Line and Goto Symbol with Goto Anything to instantly navigate to any line of code in your project.
+
+You know how some of the Goto commands just open an input overlay with a prefix character, like the : for Goto Line?
+
+By entering that special character when you're using Goto Anything, you can open a file *and* jump right to a line, symbol or search term.
+
+Typing a : after the file name opens the file at the specified line number, so entering "index:42" would open index.html at line 42.
+
+When you enter an @ after a file name, the options list changes to display a list of symbols available in the file. For example, typing "script@ren" might open script.js and jump to a function named "render".
+
+If you append the # symbol to a file name, the options list displays a list of keywords in the file. So inputting "mailspec#send" runs a search in mailbox.spec.js and jumps to the first match for the term send.
+
+And naturally any Goto commands that you combine this way support the fuzzy matching goodness you expect from Sublime.

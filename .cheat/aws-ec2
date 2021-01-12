@@ -1,0 +1,45 @@
+### data for new ubuntu servers on aws
+
+apt-get update
+apt-get -y upgrade
+# apt-get -y dist-upgrade
+apt-get -y install nginx
+apt-get -y install mariadb-client
+apt-get -y install php7.2 php7.2-fpm php7.2-mysql php7.2-pgsql php7.2-mbstring
+apt-get -y install awscli zip unzip zsh
+apt-get -y install virtualenv virtualenvwrapper
+apt-get -y install fortune-mod cowsay
+
+aws s3 sync s3://icg-aws/etc/nginx/includes.d/ /etc/nginx/includes.d/
+aws s3 cp s3://icg-aws/etc/nginx/conf.d/php.conf /etc/nginx/conf.d/php.conf
+aws s3 cp s3://icg-aws/etc/nginx/sites-available/iskcon.org /etc/nginx/sites-available/iskcon.org
+aws s3 cp s3://icg-aws/etc/nginx/sites-available/default /etc/nginx/sites-available/default
+
+chsh root -s /usr/bin/zsh
+chsh ubuntu -s /usr/bin/zsh
+
+aws s3 cp s3://icg-aws/bin/rsub /usr/local/bin/rsub
+chmod +x /usr/local/bin/rsub
+
+aws s3 sync s3://icg-aws/.dotfiles/ /root/.dotfiles/
+
+aws s3 cp s3://icg-aws/bin/zsh/z.sh /root/bin/zsh/z.sh
+chmod +x /root/bin/zsh/z.sh
+
+aws s3 sync s3://icg-aws/.dotfiles/ /home/ubuntu/.dotfiles/
+chown -R ubuntu /home/ubuntu/.dotfiles/
+chmod +x /root/.dotfiles/bootstrap /home/ubuntu/.dotfiles/bootstrap
+/root/.dotfiles/bootstrap
+
+
+aws s3 cp s3://icg-aws/bin/zsh/z.sh /root/bin/zsh/z.sh
+aws s3 cp s3://icg-aws/bin/zsh/z.sh /home/ubuntu/bin/zsh/z.sh
+chmod +x /home/ubuntu/bin/zsh/z.sh /root/bin/zsh/z.sh
+
+chown -R ubuntu /home/ubuntu/bin/
+
+aws s3 sync s3://icg-aws/fortune_cookies/ /home/ubuntu/etc/fortune_cookies/
+chown -R ubuntu /home/ubuntu/etc/
+
+nginx -s reload
+

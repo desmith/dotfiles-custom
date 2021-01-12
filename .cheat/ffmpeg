@@ -1,0 +1,5 @@
+# for f in <pattern>-*.mp4; do echo "file '$f'" >> FileList.txt; done
+# ffmpeg -f concat -i FileList.txt -c copy output.mp4
+# example:
+# for f in Vrindavana-D2-*.mp4; do echo "file '$f'" >> VrindavanaFileList.txt; done
+# ffmpeg -f concat -i VrindavanaFileList.txt -c copy Vrindavana-D2-All.mp4

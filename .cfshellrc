@@ -1,0 +1,14 @@
+# cfshell utilities will automatically read ~/.cfshellrc at startup.
+# This file is in YAML format -- see http://www.yaml.org
+
+# If you only have one Cloud Files username, use this.
+#
+username: desmith
+apikey: 9e968e4d238fd92dd3ab665647b31818
+
+# If you have multiple Cloud Files usernames, use this.
+# Otherwise, delete these lines.
+#
+#identities:
+#  your-first-username: your-first-API-key
+#  your-second-username: your-second-API-key

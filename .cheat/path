@@ -1,0 +1,16 @@
+### MacOSX has a truly global path setting that precedes any other setting like ~/.bash_profile. The file /private/etc/paths is a list of pathnames. The order from top to bottom defines the resulting order in the $PATH variable. After loading /private/etc/paths there is a directory /private/etc/paths.d/ with files in the same style. Those are appended to the $PATH variable.
+
+# The default content of /private/etc/paths looks like this:
+
+/usr/local/bin
+/usr/local/sbin
+/usr/bin
+/bin
+/usr/sbin
+/sbin
+
+
+# The resulting $PATH variable looks like this:
+
+$ echo "$PATH"
+# => "/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"

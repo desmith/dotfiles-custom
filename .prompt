@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+me=`basename "${BASH_SOURCE}"`
+
+echo "it's me: .prompt"
+
+
+# Set config variables first
+GIT_PROMPT_ONLY_IN_REPO=0
+
+GIT_PROMPT_FETCH_REMOTE_STATUS=0   # uncomment to avoid fetching remote status
+
+#GIT_PROMPT_SHOW_UPSTREAM=0 # uncomment to show upstream tracking branch
+GIT_PROMPT_SHOW_UNTRACKED_FILES=all # can be no, normal or all; determines counting of untracked files
+
+# GIT_PROMPT_STATUS_COMMAND=gitstatus_pre-1.7.10.sh # uncomment to support Git older than 1.7.10
+
+#GIT_PROMPT_START=
+#GIT_PROMPT_END=
+
+   #GIT_PROMPT_START_USER=
+   #GIT_PROMPT_START_ROOT=
+   #GIT_PROMPT_END_USER=
+   #GIT_PROMPT_END_ROOT=
+
+#GIT_PROMPT_THEME= # as last entry source the gitprompt script
+#GIT_PROMPT_THEME=Chmike
+#GIT_PROMPT_THEME=Crunch
+#GIT_PROMPT_THEME=Default
+#GIT_PROMPT_THEME=Default_NoExitState
+#GIT_PROMPT_THEME=Default_NoExitState_Ubuntu
+#GIT_PROMPT_THEME=Default_Ubuntu
+#GIT_PROMPT_THEME=Single_line
+#GIT_PROMPT_THEME=Single_line_NoExitState
+#GIT_PROMPT_THEME=Single_line_NoExitState_openSUSE
+#GIT_PROMPT_THEME=Single_line_Solarized
+#GIT_PROMPT_THEME=Single_line_Ubuntu
+#GIT_PROMPT_THEME=Single_line_openSUSE
+#GIT_PROMPT_THEME=Solarized
+#GIT_PROMPT_THEME=Solarized_NoExitState
+#GIT_PROMPT_THEME=Solarized_NoExitState_Ubuntu
+#GIT_PROMPT_THEME=Solarized_Ubuntu
+#GIT_PROMPT_THEME=Solarized_Extravagant
+#GIT_PROMPT_THEME=TruncatedPwd_WindowTitle_NoExitState_Ubuntu
+#GIT_PROMPT_THEME=TruncatedPwd_WindowTitle_Ubuntu
+#GIT_PROMPT_THEME=TruncatedPwd_WindowTitle
+#GIT_PROMPT_THEME=TruncatedPwd_WindowTitle_NoExitState
+
+GIT_PROMPT_THEME=Custom # use custom .git-prompt-colors.sh
+
+file=~/.dotfiles/.bash-git-prompt/gitprompt.sh
+loadit "${file}"

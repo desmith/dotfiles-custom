@@ -1,0 +1,6 @@
+parser = argparse.ArgumentParser(description="Monitor a directory and notify if it's empty")
+parser.add_argument("--dir", dest="watchdir", type=str, default=".", nargs="?", help="Directory to monitor")
+parser.add_argument("--event", dest="event", type=str, nargs="*", help="Event to send as body of msg.")
+parser.add_argument("-d", dest="DEBUG", default=False, nargs="?", const=True, help="debug mode")
+
+args = parser.parse_args()

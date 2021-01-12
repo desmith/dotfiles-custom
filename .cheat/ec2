@@ -1,0 +1,35 @@
+# To make an EBS volume available for use on Linux
+
+$ lsblk
+
+NAME  MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+xvdf  202:80   0  100G  0 disk
+xvda1 202:1    0    8G  0 disk /
+
+# If there is no filesystem you will get ":data"
+$ file -s /dev/xvdf
+/dev/xvdf: data
+
+# If there is already a filesystem you will get something else:
+$ file -s /dev/xvdf
+/dev/xvda1: Linux rev 1.0 ext4 filesystem data, UUID=1701d228-e1bd-4094-a14c-8c64d6819362 (needs journal recovery) (extents) (large files) (huge files)
+
+$ mkfs -t ext4 device_name
+
+$ mkdir <mount_point>
+mkdir /mnt/new_mount
+
+# make a copy of fstab for safety
+cp /etc/fstab /etc/fstab.orig
+
+# Add a new line to the end of the file for your volume using the following format:
+
+device_name  mount_point  file_system_type  fs_mntops  fs_freq  fs_passno  
+
+/dev/xvdf /mnt/data   ext4    defaults,nofail        0       2
+
+
+
+# Note
+# If you ever intend to boot your instance without this volume attached (for example, so this volume could move back and forth between different instances), you should add the nofail mount option that allows the instance to boot even if there are errors in mounting the volume. Debian derivatives, including Ubuntu versions earlier than 16.04, must also add the nobootwait mount option.
+

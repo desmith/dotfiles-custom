@@ -1,0 +1,8 @@
+### Restore files from S3 glacier:
+s3cmd restore --recursive s3://bucketname/
+
+# I've also used it to restore just folders as well:
+s3cmd restore --recursive s3://bucketname/folder/
+
+# specify how long to keep the files restored
+s3cmd restore --recursive --restore-days=NUM s3://bucketname/folder/

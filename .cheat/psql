@@ -1,0 +1,24 @@
+### load/restore database backup
+gunzip -f /var/www/lawbook.iskcon.org/data/iskcon_lawbook_dev.sql.gz
+
+### create/dump database
+sql iskcon_lawbook_dev < /var/www/lawbook.iskcon.org/data/iskcon_lawbook_dev.sql
+
+$ createuser --interactive
+
+$ createdb <database name>
+
+$ psql
+
+=# CREATE ROLE username WITH LOGIN PASSWORD '<password>';
+=# CREATE ROLE iskcon WITH LOGIN PASSWORD '<password>';
+=# CREATE DATABASE <user>;
+=# GRANT ALL PRIVILEGES ON DATABASE <database>TO <user>;
+
+=# ALTER DATABASE <database name> OWNER TO <role name>;
+
+=# ALTER USER <username> WITH PASSWORD '<new password>';
+
+psql -U icgroot -h icgdb-pgsql.couyhmpksokh.us-east-1.rds.amazonaws.com iskcon_news
+
+

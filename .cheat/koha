@@ -1,0 +1,42 @@
+export KOHA_CONF="/etc/koha/sites/ochs/koha-conf.xml"
+export PERL5LIB="/usr/share/koha/lib"
+perl /usr/share/koha/intranet/cgi-bin/installer/data/mysql/updatedatabase.pl
+/usr/share/koha/bin/migration_tools/rebuild_zebra.pl -b -r -v -run-as-root
+
+sudo zebraidx -c /etc/koha/sites/ochs/zebra-biblios.cfg drop biblios
+sudo zebraidx -c /etc/koha/sites/ochs/zebra-biblios.cfg commit 
+
+koha-rebuild-zebra -f -v -b ochs
+
+# Parameters:
+	-f, --full Does a reindex of the whole collection. Will run even if USE_INDEXER_DAEMON=yes.
+	-a, --authorities Only run the indexing process for authority records.
+	-b, --biblios Only run the indexing process for biblio records.
+	-q, --quiet Sometimes be a bit quieter for scripts/cronjobs.
+	-v, --verbose Be verbose. Useful for debugging indexing problems.
+
+### If js/css is not loading, make sure this is in the apche configs:
+RewriteRule ^(.*)_[0-9][0-9]\.[0-9][0-9][0-9][0-9][0-9][0-9][0-9].js$ $1.js [L]
+RewriteRule ^(.*)_[0-9][0-9]\.[0-9][0-9][0-9][0-9][0-9][0-9][0-9].css$ $1.css [L]
+
+
+If you rebuild your zebra indexes as root instead of the koha user, you will change the file permissions. The result is that automatic updates of the indexes won't work any longer. The following instructions are for package installations of Koha. Copied from an email by Robin Sheat http://lists.katipo.co.nz/pipermail/koha/2013-July/036861.html
+
+By doing a rebuild_zebra with sudo, you've gone and broken your permissions again, stopping incremental updating from working. So here's what I'd do:
+
+shut down anything to do with zebrasrv. 'sudo service koha-common stop' and some checking with ps to make sure there's nothing still running. If there is, figure out where it's coming from and kill it.
+delete /var/lock/koha
+delete /var/run/koha
+delete /var/lib/koha
+run 'sudo koha-create-dirs library'
+rebuild everything: 'sudo koha-rebuild-zebra -f -v -v library'
+start up zebrasrv: 'sudo service koha-common start'
+[…]
+
+Also note that as a result of deleting /var/lib/koha, you'll need to run 'sudo koha-email-enable library' to have email turned back on if you use that.
+
+Robin Sheat
+Catalyst IT Ltd.
+✆ +64 4 803 2204
+GPG: 5957 6D23 8B16 EFAB FEF8 7175 14D3 6485 A99C EB6D
+Robin Sheat robin at catalyst.net.nz

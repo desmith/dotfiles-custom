@@ -1,0 +1,14 @@
+% diskutil list
+
+# In this case /dev/disk2 is my SD card.
+
+
+% sudo diskutil eraseDisk FAT32 SDCARD MBRFormat /dev/disk2
+
+# sudo gives me super user rights.
+# diskutil calls the disk utility program.
+# eraseDisk is the command for formating.
+# FAT32 sets the file system.
+# SDCARD is the to be given name of my choice.
+# MBRFormat tells the disk utility program to format with a Master Boot Record.
+# /dev/disk2 is the location of my SD card.

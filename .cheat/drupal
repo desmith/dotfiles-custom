@@ -1,0 +1,2 @@
+### Reset root/admin user password
+update users set pass=md5('NEWPASS') where uid = 1;

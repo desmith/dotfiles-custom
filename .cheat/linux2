@@ -1,0 +1,25 @@
+yum -y update
+yum install -y python python3 python3-pip php git zsh
+yum install -y python-devel python3-devel python-pip python-virtualenv 
+amazon-linux-extras install -y nginx1.12 php7.2
+yum install -y postgresql-devel mysql-devel
+yum install -y make automake gcc gcc-c++ kernel-devel
+yum install -y libtiff-devel libjpeg-devel libzip-devel freetype-devel lcms2-devel libwebp-devel tcl-devel libxslt-devel libxml2-devel
+pip install virtualenv virtualenvwrapper uwsgi
+pip3 install virtualenv uwsgi
+#yum install -y install fortune cowsay ubuntu-server-tips
+
+
+aws s3 sync s3://icg-aws/etc/nginx /etc/nginx/
+aws s3 sync s3://icg-aws/bin /root/bin/
+aws s3 sync s3://icg-aws/bin /home/ec2-user/bin/
+aws s3 sync s3://icg-aws/dotfiles/ /root/.dotfiles/
+aws s3 sync s3://icg-aws/dotfiles/ /home/ec2-user/.dotfiles/
+chown -R ec2-user:ec2-user /home/ec2-user/.dotfiles  /home/ec2-user/bin/
+chmod +x /root/.dotfiles/bootstrap
+chmod +x /home/ec2-user/.dotfiles/bootstrap
+usermod --shell /bin/zsh root
+usermod --shell /bin/zsh ec2-user
+
+/root/.dotfiles/bootstrap
+su ec2-user /home/ec2-user/.dotfiles/bootstrap

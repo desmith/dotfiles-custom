@@ -1,0 +1,2 @@
+npx figlet-cli Radha | lolcatjs --animate
+npx figlet-cli Krishna | lolcatjs --animate

@@ -1,0 +1,36 @@
+https://docs.civicrm.org/dev/en/latest/tools/debugging/
+
+### Using URL parameters
+
+# After enabling debugging, append any of the following name-value pairs to the URL for the page you visit.
+
+	&smartyDebug=1 opens the Smarty Debug Window which loads all variables available to the current page template into a pop-up window (make sure you have pop-up blocking disabled).
+	&sessionReset=2 resets all values in your client session.
+	&directoryCleanup=1 empties template cache in civicrm/templates_c.
+	&directoryCleanup=2 removes temporary upload files in civicrm/upload.
+	&directoryCleanup=3 performs both of the above actions.
+	&backtrace=1 displays a stack trace listing at the top of a page.
+	&sessionDebug=1 displays the current users session variables in the browser.
+	&angularDebug=1 displays live variable updates on certain Angular-based pages.
+
+### Displaying a backtrace¶
+
+# The backtrace can be enabled independently of debugging. If this option is selected, a backtrace will be displayed even if debugging is disabled.
+
+### Changing file-based settings
+
+# The following values can be added to your site's settings file civicrm.settings.php to assist in debugging:
+
+define('CIVICRM_MAIL_LOG', 1); causes all outbound CiviCRM email to be written to a log file. No real emails are sent.
+
+define('CIVICRM_MAIL_LOG', '/dev/null'); causes all outbound emails to be discarded. No email is sent and emails are not written to disk.
+
+define('CIVICRM_DEBUG_LOG_QUERY', 1); outputs all SQL queries to a log file.
+
+define('CIVICRM_DEBUG_LOG_QUERY', 'backtrace'); will include a backtrace of the PHP functions that led to the query.
+
+define('CIVICRM_DAO_DEBUG', 1); writes out various data layer queries to your browser screen.
+
+define('CIVICRM_CONTAINER_CACHE', 'never'); causes Civi to rebuild the container from the latest data on every page-load.
+
+

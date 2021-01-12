@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+
+source ~/.functions-git
+source ~/.prompt-colors
+
+# function to retrieve a random element from an array
+randArrayElement(){ arr=("${!1}"); echo -n ${arr["$[RANDOM % ${#arr[@]}]"]}; }
+
+### Various variables for the PS1 prompt
+Time12h="\T"
+Time12a="\@"
+PathShort="\w"
+PathFull="\W"
+NewLine="\n"
+Jobs="\j"
+SPDate=" \d"
+usr="\u"
+hst="\H"
+at="@"
+
+# should load one of these:
+declare -a prompts=( \
+	~/.prompt1 \
+	~/.prompt2 \
+	~/.prompt3 \
+	~/.prompt4 \
+	~/.prompt5 \
+)
+
+
+### not using this since it sometimes repeats a prompt without cycling through all entries :-(
+#thisprompt=$(randArrayElement "prompts[@]")
+
+count_file=~/.prompt_count
+prompt_count=0
+if [ ! -f "${count_file}" ]; then
+	touch ${count_file}
+else
+	prompt_count=`cat "${count_file}"`
+fi
+
+let "prompt_count++"
+
+if [ "${prompt_count}" -gt "${#prompts[@]}" ]; then
+	# we've reached the end of the list, starting over
+	prompt_count=1
+fi
+
+# store the increment
+echo ${prompt_count} > ${count_file}
+
+idx=$(( ${prompt_count} - 1 ))
+thisprompt=${prompts[${idx}]}
+
+###adds current directory to title of iterm window
+#PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+
+echo "thisPrompt=${thisprompt}"
+source ${thisprompt}

@@ -1,0 +1,68 @@
+#####################
+## Notes:
+# - custom template lives at: https://github.com/desmith/django-vanilla/
+# - shell alias which calls the bash script is defined as:
+alias djstart=django_startproj.bash
+
+# - bash script to load custom template with custom params live at:
+#
+#   ~/bin/bash/django_startproj.bash                                                                                    Thu 16 11:35AM
+
+django-admin startproject \
+  --template https://github.com/desmith/django-vanilla/archive/master.zip \
+    --extension py,conf,js,css,ini,txt \
+      --name .venv,README.rst,README.md,brunch-config.coffee,package.json \
+        $1
+#####################
+
+
+### set for all NEW virtualenvs:
+$ echo "export DJANGO_SETTINGS_MODULE=config.settings.local" >> /opt/.virtualenvs/postactivate
+$ echo "unset DJANGO_SETTINGS_MODULE" >> /opt/.virtualenvs/postdeactivate
+
+### set for EXISTING virtualenvs:
+$ mkvirtualenv <project_root>
+$ workon <project_root>
+$ add2virtualenv <cwd>
+
+$ echo "export DJANGO_SETTINGS_MODULE=config.settings.local" >> $VIRTUAL_ENV/bin/postactivate
+$ echo "unset DJANGO_SETTINGS_MODULE" >> $VIRTUAL_ENV/bin/postdeactivate
+
+### no more manage.py!
+rm manage.py
+django-admin.py shell
+django-admin.py runserver
+
+### User management:
+from django.contrib.auth.models import User
+
+# create new (super)users:
+user = User.objects.create_user(‘george', 'george@thebeatles.com', 'kirtanacarya')
+user = User.objects.create_superuser('george', 'george@thebeatles.com', 'kirtanacarya')
+user = User.objects.create_superuser('devaprastha', 'devaprastha@gmail.com', '')
+
+# set properties
+user.first_name = 'George'
+user.last_name = 'Harrison'
+user.save()
+
+# get existing user/change password
+user = User.objects.get(username='george')
+user.set_password('kirtanacarya')
+user.save()
+
+# Tastypie create api_keys:
+django-admin.py backfill_api_keys
+
+### Creating a new project
+# 1)  create a Django project based on our custom template
+djstart <projectname>
+cd <projectname>
+
+# 2) create virtualenv and add our newly minted project to it:
+mkvirtualenv <projectname> -a .
+
+
+# Classy Class-Based Views
+https://ccbv.co.uk
+

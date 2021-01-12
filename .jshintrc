@@ -1,0 +1,8 @@
+{
+  "camelcase": true,
+  "trailing": true,
+  "eqeqeq": true,
+  "curly": true,
+  "indent": 2,
+  "quotmark": "single"
+}

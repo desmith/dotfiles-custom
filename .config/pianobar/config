@@ -1,0 +1,49 @@
+audio_quality = high
+#audio_quality = {high, medium, low}
+
+#audio_format = mp3
+#audio_format = {aacplus, mp3, mp3-hifi (#Pandora One customers only) }
+
+user = desmith@gmail.com
+password = vrnda108
+
+fifo = /etc/pianobar/ctl
+#volume = 0
+
+#GHari
+#autostart_station = 226976974248549343
+
+#Rodriguez
+#autostart_station = 2017345842616671199
+
+event_command = /etc/pianobar/scripts/pianobar-notify.rb
+#event_command = /etc/pianobar/scripts/eventReciever.py
+#event_command = /etc/pianobar/scripts/pianobar-notify.sh
+
+# Keybindings
+#act_help = ?
+#act_songlove = +
+#act_songban = -
+#act_stationaddmusic = a
+#act_stationcreate = c
+#act_stationdelete = d
+#act_songexplain = e
+#act_stationaddbygenre = g
+#act_songinfo = i
+#act_addshared = j
+#act_songmove = m
+#act_songnext = n
+#act_songpause = p
+#act_quit = q
+#act_stationrename = r
+#act_stationchange = s
+#act_songtired = t
+#act_upcoming = u
+#act_stationselectquickmix = x
+#act_voldown = (
+#act_volup = )
+
+#Path to CA certifiate bundle, containing the root and intermediate certificates
+#required to validate Pandora’s SSL certificate.
+#ca_bundle = /etc/ssl/certs/ca-certificates.crt
+

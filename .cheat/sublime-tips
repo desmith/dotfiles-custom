@@ -1,0 +1,126 @@
+### To access the clipboard history, simply hit ⌘ + K, ⌘ + V
+(just add the ⌘ + K in front of your regular paste shortcut).
+
+### Basic
+- ctrl+d Select the next occurrence of the selected word
+- ctrl+k, ctrl+b - Toggle the sidebar
+- f11 - Toggle Full Screen
+- shift+f11 - Toggle Distraction Free (this one is my favorite)
+- alt+. - Close Tag
+- ctrl+p - Show the go to overlay panel
+- ctrl+shift+p - Show the command overlay panel
+- ctrl+alt+p - Show the project selector panel
+- ctrl+r - Show the go to overlay panel default to method selector
+- ctrl+g - Show the go to overlay panel default to go to line selector
+- ctrl+; - Show the go to overlay panel default to variable selector
+- ctrl+shift+up - Swap with the line above
+- ctrl+shift+down - Swap with the line below
+- ctrl+/ - Toggle a comment
+- ctrl+shift+/ - Toggle a comment block
+- ctrl+shift+d - Duplicate a line
+- ctrl+` - Display console panel
+- ctrl+space - Auto complete the current selected snippet
+
+
+### Goto Anything
+Use Goto Anything to open files with only a few keystrokes,
+and instantly jump to symbols, lines or words.
+
+Triggered with ⌘ P, it is possible to:
+
+- Type part of a file name to open it.
+- Type @ to jump to symbols, # to search within the file, and : to go to a line number.
+
+These shortcuts can be combined, so tp@rf may take you to a function read_file within a file text_parser.py. Similarly, tp:100 would take you to line 100 of the same file.
+
+
+### Multiple Selections
+
+Multiple selections allow you to interactively change many lines at once
+
+$ Press ⇧ ⌘ L to split the selection into lines
+$ Press ⌘ D to select the next occurrence of the selected word.
+To make multiple selections with the mouse, take a look at the Column Selection documentation.
+
+### Command Palette
+
+The Command Palette holds infrequently used functionality, like sorting,
+changing the syntax and changing the indentation settings.
+
+With just a few keystrokes, you can search for what you want,
+without ever having to navigate through the menus or remember obscure key bindings.
+
+# Show the Command Palette with ⌘ ⇧ P.
+
+
+### General
+⌘ T go to file
+⌘ ⌃ P go to project
+⌘ R go to methods
+⌃ G go to line
+⌘ K B toggle side bar
+⌘ ⇧ P command prompt
+⌃ ` python console
+⌘ ⇧ N new window (useful for new project)
+
+### Editing
+⌘ L select line (repeat select next lines)
+⌘ D select word (repeat select others occurrences in context for multiple editing)
+⌃ ⇧ M select content into brackets
+⌘ ⇧ ↩ insert line before
+⌘ ↩ inter line after
+⌃ ⇧ K delete line
+⌘ K K delete from cursor to end of line
+⌘ K ⌫  delete from cursor to start of line
+⌘ ⇧ D duplicate line(s)
+⌘ J join lines
+⌘ K U upper case
+⌘ K L lower case
+⌘ / comment
+⌘ ⌥  / block comment
+⌘ Y redo or repeat
+⌘ ⇧ V past and ident
+⌃ space autocomplete (repeat to select next suggestion)
+⌃ M jump to matching brackets
+⌘ U soft undo (movement undo)
+⌘ ⇧ U soft redo (movement redo)
+
+### XML/HTML
+⌘ ⇧ A select content into tag
+⌘ ⌥  .  close tag
+
+### Find/Replace
+⌘ F find
+⌘ ⌥ F replace
+⌘ ⌥ G find next occurrence of current word
+⌘ ⌃ G select all occurrences of current word for multiple editing
+⌘ ⇧ F find in files
+
+### Splits/Tabs
+⌘ ⌥ 1 single column
+⌘ ⌥ 2 two columns
+⌘ ⌥ 5 grid (4 groups)
+⌃ [1,2,3,4] focus group
+⌃ ⇧ [1,2,3,4] move file to group
+⌘ [1,2,3…] select tab
+
+### Bookmarks
+⌘ F2 toggle bookmark
+F2 next bookmark
+⇧ F2 previous bookmark
+⌘ ⇧ F2 clear bookmarks
+
+### Marks
+⌘ K space
+set mark // ⌘ K; for me
+⌘ K W delete from cursor to mark
+⌘ K A select from cursor to mark
+⌘ K G clear mark
+
+### Swap text
+These commands move any text you've highlighted up or down a line, swapping places with the nearby code.
+You can also use them on just the current line with no highlighting required.
+
+Ctrl+Cmd+Up
+Ctrl+Cmd+Down
+

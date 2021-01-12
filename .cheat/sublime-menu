@@ -1,0 +1,9 @@
+# add Copy File Path to the tab right click menu.
+
+# Open a new tab and paste the following:
+
+[
+  { "command": "copy_path", "caption": "Copy File Path" }
+]
+
+#Save this in a new file named Tab Context.sublime-menu in your Packages/User folder.

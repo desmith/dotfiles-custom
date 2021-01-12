@@ -1,0 +1,64 @@
+# To connect to a database
+mysql -h localhost -u root -p
+
+# To backup all databases
+mysqldump --all-databases --all-routines -u root -p > ~/fulldump.sql
+
+# To restore all databases
+mysql -u root -p  < ~/fulldump.sql
+
+# To create a database in utf8 charset
+CREATE DATABASE owa CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+# To add a user and give rights on the given database
+GRANT ALL PRIVILEGES ON database.* TO 'user'@'localhost'IDENTIFIED BY 'password' WITH GRANT OPTION;
+
+GRANT ALL PRIVILEGES ON *.* TO `devap`@`localhost` WITH GRANT OPTION;
+GRANT RELOAD,PROCESS ON *.* TO `devap`@`localhost`;
+FLUSH PRIVILEGES;
+
+
+# To list the privileges granted to the account that you are using to connect to the server. Any of the 3 statements will work. 
+SHOW GRANTS FOR CURRENT_USER();
+SHOW GRANTS;
+SHOW GRANTS FOR CURRENT_USER;
+
+# Basic SELECT Statement
+SELECT * FROM tbl_name;
+
+# Basic INSERT Statement
+INSERT INTO tbl_name (col1,col2) VALUES(15,col1*2);
+
+# Basic UPDATE Statement
+UPDATE tbl_name SET col1 = "example";
+
+# Basic DELETE Statement
+DELETE FROM tbl_name WHERE user = 'jcole';
+
+#encrypt
+openssl enc -aes-256-cbc -e -in ${1} -out ${1}.enc -pass pass:"${CONFIG_encrypt_password}"
+
+#decrypt
+openssl enc -d -aes-256-cbc -in DATABASE_BACKUP_FILENAME.sql.gz.enc -out DATABASE_BACKUP_FILENAME.sql.gz -pass pass:"${CONFIG_encrypt_password}"
+
+#reset root password
+# Stop the MySQL server if it is running. Locate the .pid file that contains the server's process ID. The exact location and name of this file depend on your distribution, host name, and configuration. Common locations are /var/lib/mysql/, /var/run/mysqld/, and /usr/local/mysql/data/. Generally, the file name has an extension of .pid and begins with either mysqld or your system's host name.
+
+# Stop the MySQL server by sending a normal kill (not kill -9) to the mysqld process. Use the actual path name of the .pid file in the following command: 
+
+kill `cat mysqld.pid`
+
+# Create a text file containing the password-assignment statement on a single line. Replace the password with the password that you want to use. 
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass';
+
+# Start the MySQL server with the special --init-file option:
+mysqld --init-file=<reset_file> &
+
+# If the ALTER USER statement fails to reset the password, try repeating the procedure using the following statements to modify the user table directly: 
+
+UPDATE mysql.user
+  SET authentication_string = PASSWORD('MyNewPass'), password_expired = 'N'
+  WHERE User = 'root' AND Host = 'localhost';
+FLUSH PRIVILEGES;
+
+

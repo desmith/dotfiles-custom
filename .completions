@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+
+me=`basename "${BASH_SOURCE}"`
+
+### Global settings for all environments ###
+# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards¬
+[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2 | tr ' ' '\n')" scp sftp ssh;
+
+
+### Ubuntu specific ###
+if [[ $platform == 'linux' ]]; then
+  for file in \
+	/etc/bash_completion \
+	/usr/share/bash-completion/bash_completion \
+	/etc/bash_completion.d/hub.bash_completion.sh \
+	/usr/share/bash-completion/completions/ansible-completion.bash \
+	/usr/share/bash-completion/completions/git-completion.bash \
+	/usr/share/bash-completion/completions/wp-completion.bash \
+	/usr/share/bash-completion/completions/cheat.bash \
+	/usr/share/bash-completion/completions/django-bash-completion.bash \
+	/usr/local/src/zfsnap/completion/zfsnap-completion.bash \
+	/usr/share/virtualenvwrapper/virtualenvwrapper.sh \
+	; do
+		loadit "${file}"
+	done;
+	unset file;
+fi
+
+### OS X specific ###
+if [[ $platform == 'freebsd' ]]; then
+
+	# Add `killall` tab completion for common apps
+	complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
+
+	if which brew > /dev/null; then
+		for file in \
+			"$(brew --prefix)/etc/bash_completion" \
+			"$(brew --prefix)/etc/bash_completion.d/ansible" \
+			"$(brew --prefix)/etc/bash_completion.d/brew" \
+			"$(brew --prefix)/etc/bash_completion.d/cheat.bash" \
+			"$(brew --prefix)/etc/bash_completion.d/git-completion.bash" \
+			"$(brew --prefix)/etc/bash_completion.d/docker" \
+			"$(brew --prefix)/etc/bash_completion.d/django" \
+			"$(brew --prefix)/etc/bash_completion.d/npm" \
+			"$(brew --prefix)/etc/bash_completion.d/password-store" \
+			"$(brew --prefix)/etc/bash_completion.d/vagrant" \
+			"$(brew --prefix)/etc/bash_completion.d/wp-completion" \
+		; do
+			loadit ${file}
+		done;
+		unset file;
+	fi;
+
+
+fi
+### end of OS X specific
+
+### This needs to run after the git-completion scripts are loaded
+# Enable tab completion for `g` by marking it as an alias for `git`
+#if type _git &> /dev/null; then
+#  complete -o default -o nospace -F _git g
+#else
+#  if [ "${CONFIG_DEBUG}" -gt 0 ]; then
+#    echo "[${me}]: ERROR: git NOT FOUND!"
+#  fi
+#fi;

@@ -1,0 +1,78 @@
+###
+### Install
+### We can install Babel CLI locally by running:
+###
+
+###
+### LATEST ###
+###
+
+$ npm install babel-plugin-transform-react-jsx
+
+### Via .babelrc (Recommended)
+
+#.babelrc
+{
+  "plugins": ["transform-react-jsx"]
+}
+
+
+### older
+$ npm install --save-dev babel-cli
+$ npm install --global babel-cli babel-preset-react
+
+### Note: Since it's generally a bad idea to run Babel globally 
+### you may want to uninstall the global copy by running:
+
+$ npm uninstall --global babel-cli.
+(then install locally per above)
+
+### .babelrc
+{ "presets": ["react"] }
+
+### package.json
+### After that finishes installing, your package.json file should look like this:
+
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "devDependencies": {
+    "babel-cli": "^6.0.0"
+  }
+}
+
+
+
+### Compile the file script.js and output to stdout.
+
+$ babel script.js
+# output...
+
+### If you would like to output to a file you may use --out-file or -o.
+
+$ babel script.js --out-file script-compiled.js
+
+### To compile a file every time that you change it, use the --watch or -w option:
+
+$ babel script.js --watch --out-file script-compiled.js
+
+
+### Compile the entire src directory and output it to the lib directory. You may use --out-dir or -d.
+
+$ babel src --out-dir lib
+
+### Compile the entire src directory and output it to the one concatenated file.
+
+$ babel src --out-file script-compiled.js
+
+### Ignore spec and test files
+
+$ babel src --out-dir lib --ignore spec.js,test.js
+
+
+### Pipe a file in via stdin and output it to script-compiled.js
+
+$ babel --out-file script-compiled.js < script.js
+
+
+

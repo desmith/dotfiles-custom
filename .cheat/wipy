@@ -1,0 +1,42 @@
+### wit envvars set
+ESPPORT=/dev/cu.usbmodemPy1bf7941
+ESPBAUD=115200
+
+### Using esptools
+
+# 1) Download the latest firmware:
+curl "https://software.pycom.io/findupgrade?key=wipy.wipy%20with%20esp32&redirect=false&type=all"
+
+wget <file>
+# 2) After the firmware is downloaded, unpack the tarball to a temporary folder.
+# 3) Make sure you have [esptool](https://github.com/espressif/esptool) installed. This is the commandline tool which will be used for flashing.
+pip2 install esptool
+
+# 4) The tarball contains bootloader, partition table and the firmware itself. Usually you do not update the bootloader and partition table. However for completeness sake in this example I update everything.
+
+### Before flashing you must put the board to a programming mode.
+esptool.py --port /dev/cu.usbmodem* --after no_reset read_mac
+
+# The ESP32 bootloader lives at flash offset `0x1000`
+esptool.py --port /dev/cu.usbmodem* --baud 115200 --after no_reset write_flash --flash_mode dio --flash_freq 80m --flash_size detect 0x1000 bootloader.bin
+
+# After bootloader flash the partition table. It goes to to offset `0x8000`
+esptool.py --port /dev/cu.usbmodem* --baud 115200 --after no_reset write_flash --flash_mode dio --flash_freq 80m --flash_size detect 0x8000 partitions.bin
+
+# inally flash to firmware itself. Offset is `0x10000`
+esptool.py --port /dev/cu.usbmodem* --baud 115200 --after no_reset write_flash --flash_mode dio --flash_freq 80m --flash_size detect 0x10000 wipy.bin
+
+
+### Using PyCom tools:
+# erase flash
+pycom-fwtool-cli -v erase_fs
+
+# write new firmware to flash
+pycom-fwtool-cli -v flash -t WiPy-1.18.2.r7.tar.gz
+
+### without envvars set
+# erase flash
+pycom-fwtool-cli -v -p /dev/cu.usbmodemPy1bf7941 erase_fs
+
+# write new firmware to flash
+pycom-fwtool-cli -v -p /dev/cu.usbmodemPy1bf7941 flash -t WiPy-1.18.2.r7.tar.gz

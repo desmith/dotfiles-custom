@@ -1,0 +1,13 @@
+### Configure Apache to Start on Boot
+# Start Apache:
+sudo systemctl start httpd
+
+# Be sure that Apache starts at boot:
+sudo systemctl enable httpd
+
+### Other useful commands for Apache
+# To check the status of Apache:
+sudo systemctl status httpd
+
+# To stop Apache:
+sudo systemctl stop httpd

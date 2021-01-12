@@ -1,0 +1,4 @@
+lsblk
+df -h
+sudo resize2fs /dev/nvme0n1p1
+sudo growpart /dev/nvme0n1 1

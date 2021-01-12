@@ -1,0 +1,34 @@
+Install ASK CLI
+
+Use npm to install ASK CLI. Run the npm global install command into the ask-cli folder:
+
+$ npm install -g ask-cli
+
+Initialize ASK CLI
+
+The first time you use ASK CLI, you must call the init command to initialize the tool with your Amazon developer account.
+
+$ ask init
+
+You will be prompted to select your profile and to log in to your developer account. Once the initialization is complete, you can use ASK CLI to manage your skills.
+
+Creating a new skill
+
+The ask new command allows you to quickly create a new Alexa skill.
+
+$ ask new --skill-name 'my-skill'
+$ cd my-skill
+$ ask deploy
+
+This will create a fully working "Hello World" skill that can be enabled and invoked immediately. If you make any subsequent changes, just use ask deploy again to deploy all of your changes.
+Working on an existing skill
+
+The ask clone command allows you to set up a local project from your existing skill.
+
+$ ask clone --skill-id 'amzn1.ask.skill.UUID'
+$ cd my-existing-skill-name
+# make some changes here
+$ ask deploy
+
+ask deploy will deploy all of your changes to skill manifest, interaction models, and AWS Lambda function(s).
+

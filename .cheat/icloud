@@ -1,0 +1,6 @@
+# Disable notifications when removing files from iCloud Drive:
+
+  1. Open Finder.
+  2. Open Finder Preferences.
+  3. Click Advanced.
+  4. Uncheck Show warning before removing from iCloud Drive.

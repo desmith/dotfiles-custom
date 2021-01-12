@@ -1,0 +1,64 @@
+### There are currently a few options for using Python 3 with mysql:
+
+https://pypi.python.org/pypi/mysql-connector-python
+
+    Officially supported by Oracle
+    Pure python
+    A little slow
+    Not compatible with MySQLdb
+
+https://pypi.python.org/pypi/pymysql
+
+    Pure python
+    Faster than mysql-connector
+    Almost completely compatible with MySQLdb, after calling pymysql.install_as_MySQLdb()
+
+https://pypi.python.org/pypi/cymysql
+
+    fork of pymysql with optional C speedups
+
+https://pypi.python.org/pypi/mysqlclient
+
+    Django's recommended library.
+    Friendly fork of the original MySQLdb, hopes to merge back some day
+    The fastest implementation, as it is C based.
+    The most compatible with MySQLdb, as it is a fork
+    Debian and Ubuntu use it to provide both python-mysqldb andpython3-mysqldb packages.
+
+benchmarks here: https://github.com/methane/mysql-driver-benchmarks
+
+
+### If you get this error when trying to install mysql-python:
+
+Command "python setup.py egg_info" failed with error code 1 in /private/tmp/pip-install-Csb9jJ/MySQL-python/
+
+(from: https://zehengl.github.io/2017/12/17/pip-install-mysqlclient-on-macos/)
+
+You would need the mysql connector
+
+You can either install mysql
+
+$ brew install mysql
+
+or, if you don't want to install the full mysql, you can just do this:
+
+$ brew install mysql-connector-c
+
+Modify mysql_config like following:
+
+vi /usr/local/bin/mysql_config
+
+  ```
+  # Create options
+  libs="-L$pkglibdir"
+  libs="$libs -l "
+  ```
+
+  should be:
+
+  ```
+  # Create options
+  libs="-L$pkglibdir"
+  libs="$libs -lmysqlclient -lssl -lcrypto"
+  ```
+

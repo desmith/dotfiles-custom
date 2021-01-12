@@ -1,0 +1,14 @@
+# Replace all spaces in filenames with underscores.
+zmv '* *' '$f:gs/ /_'
+
+# Rename all files according to a pattern.
+zmv '*.(*).(*).([0-9][0-9])*.mkv' '$1_$2-$3.mkv'
+
+# Rename file.JPG to file.jpg
+zmv '(*).JPG' '$1.jpg'
+
+# or just
+zmv '(*).*' '$1.jpg'
+
+# example
+zmv '*([0-9][0-9]).pdf' 'Saranagati_issue_$1.pdf'

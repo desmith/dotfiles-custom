@@ -1,0 +1,32 @@
+function l --description "ls w/ color output and git indicators"
+	if test -n "$COLORLS"
+		eval colorls -1 --git-status $argv
+	else
+		command ls -F $argv
+	end
+end
+
+function la --description "show me your secrets"
+	if test -n "$COLORLS"
+		eval colorls -A --sort-dirs --git-status $argv
+	else
+		command ls -Ah $argv
+	end
+end
+
+function ll --description "long ls w/ color output and indicators"
+	if test -n "$COLORLS"
+		colorls -l --report --git-status $argv
+	else
+		command ls -lFGh $argv
+	end
+end
+
+function lla --description "sir list-alot has secrets"
+	if test -n "$COLORLS"
+		colorls -lA --report --git-status $argv
+	else
+		command ls -lAFGh $argv
+	end
+end
+

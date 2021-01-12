@@ -1,0 +1,11 @@
+query = self.request.GET.get("q")
+
+#Object = models.Model
+def get_random_quote(Object):
+    max_id = Object.objects.all().aggregate(max_id=Max("id"))['max_id']
+    while True:
+        pk = random.randint(1, max_id)
+        quote = Object.objects.filter(pk=pk).first()
+        if quote:
+            return quote
+

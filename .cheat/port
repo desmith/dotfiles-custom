@@ -1,0 +1,5 @@
+### Determine who/what is listening on a particular port
+
+PORT=80
+sudo lsof -nP -i4TCP:$PORT | grep LISTEN
+

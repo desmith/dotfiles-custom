@@ -1,0 +1,91 @@
+### Once you’ve got Homebrew installed, you can update Homebrew itself with the command:
+
+brew update
+
+# Now that we’re up to date, we can manage our formulae with Homebrew. I’ll normally install Git, Hugo, Python, Ruby (rbenv), Trash, Yarn and various ZSH plugins; so you’ll see those in my examples.
+
+### Install a formula
+
+brew install git
+
+### Find other formula
+
+# Outside of the standard Homebrew list of formulae, you can access other repositories of formulae for other functions. An example of this would be the Homebrew PHP “tap” which can be installed by accessing three taps:
+
+# https://github.com/Homebrew/homebrew-php#installation
+brew tap homebrew/dupes
+brew tap homebrew/versions
+brew tap homebrew/homebrew-php
+
+# You will now be able to access a lot of new PHP formulae.
+
+
+### List installed formulae
+
+# Show the individual packages installed
+brew list
+
+# returns:
+autoconf    node          rbenv         yarn
+gdbm        openssl       readline      z
+git         pcre          ruby-build    zsh
+hugo        pkg-config    sqlite        zsh-completions
+icu4c       python        trash         zsh-syntax-highlighting
+
+
+# Show each of the full formulae installed
+
+brew leaves
+
+# returns:
+git
+hugo
+python
+rbenv
+trash
+yarn
+z
+zsh
+zsh-completions
+zsh-syntax-highlighting
+
+### Find outdated formulae
+
+brew outdated
+# If nothing is returned to the terminal, you're up-to-date.
+
+# Update a formula or update everything
+
+# Update a specific formula (e.g. Git)
+brew upgrade git
+
+### Upgrade all formula
+brew upgrade
+
+### Uninstall a formula
+
+brew uninstall git
+
+### Uninstall everything
+
+brew remove --force --ignore-dependencies $(brew list)
+
+### Clean up old formulae
+
+# List forumlas that can be cleaned up
+brew cleanup -n
+
+# Remove all old formulae
+brew cleanup
+
+# Remove old symlinks
+brew prune
+
+### Get help with formulae
+
+# Homebrew has a built-in doctor which will let you know if everything is working correctly. If not, it will output an error message that you can hopefully use to diagnose the issue.
+
+brew doctor
+
+### Use a GUI
+#The alternative to remembering all of these commands is using a GUI. For those who want a GUI, Cakebrew seems to be the best option.  https://www.cakebrew.com/

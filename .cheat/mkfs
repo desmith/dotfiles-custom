@@ -1,0 +1,4 @@
+#Formating EBS Volume so we can use it by
+{sudo} mkfs -t ext4 /dev/<device>
+
+mkfs -t xfs /dev/xvdm

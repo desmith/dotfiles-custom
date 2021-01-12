@@ -1,0 +1,9 @@
+### Downgrade Node 9 in MacOS
+$ brew install node@8 // just install node8 side by side
+$ brew unlink node    // unlink old one
+$ brew link node@8    // link node version 8
+
+### Virtualenv 
+pip install nodeenv
+nodeenv -p --node=4.2.2
+# The nodeenv -p option will install node into your python venv which will make your life easier probably.

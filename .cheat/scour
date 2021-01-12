@@ -1,0 +1,26 @@
+### Standard:
+scour -i input.svg -o output.svg
+
+### Better (for older versions of Internet Explorer):
+scour -i input.svg -o output.svg --enable-viewboxing
+
+### Maximum scrubbing:
+scour -i input.svg -o output.svg --enable-viewboxing --enable-id-stripping \
+  --enable-comment-stripping --shorten-ids --indent=none
+
+###Maximum scrubbing and a compressed SVGZ file:
+scour -i input.svg -o output.svgz --enable-viewboxing --enable-id-stripping \
+  --enable-comment-stripping --shorten-ids --indent=none
+
+scour --enable-viewboxing --enable-id-stripping --enable-comment-stripping \
+  --shorten-ids --indent=none -i input.svg -o output.svg
+
+scour \
+  --strip-xml-prolog \
+  --remove-descriptive-elements \
+  --enable-comment-stripping \
+  --enable-viewboxing \
+  --no-line-breaks \
+  --strip-xml-space \
+  --enable-id-stripping \
+  --shorten-ids \

@@ -1,0 +1,31 @@
+### Git Hooks
+
+# I found that these tools were important in my workflow and decided to add them as a pre-commit hook in git. For those unfamiliar with git hooks, the documentation for them can be found here. They essentially provide a way to customize your git workflow and enforce things such as commit message format or linting.
+
+# In this case I want to run the tools above before a commit is made. Git’s pre-commit hook is run before a new commit is made in the current branch as implied by the name. It adds a little extra time to the process but it is nice to have in the sense that it catches problems and allows you to adjust the working tree. This ensures that all commits are up to your standard.
+
+# Here is the pre-commit hook I use for all my go projects:
+
+__________________________________________________________
+#!/bin/bash
+
+check_exit() {
+    if [ $? -eq 1 ]; then
+        printf "linting failed when running $1...\n"
+        exit 1
+    fi
+}
+
+go vet $(glide nv)
+check_exit "go vet"
+
+gosimple $(glide nv)
+check_exit "gosimple"
+
+unused $(glide nv)
+check_exit "unused"
+
+staticcheck $(glide nv)
+check_exit "staticcheck"
+
+# The glide nv command lists all non-dependency code used in a project. It’s akin to ./... in the sense that is runs over all packages. Glide is the dependency manager I use for my projects and the site can be found here for those that are interested.

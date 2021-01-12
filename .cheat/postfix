@@ -1,0 +1,30 @@
+
+# show shape of active mail queue by default. 
+# Ideally it should be as close as to empty since postfix sends email instantly
+qshape 
+
+qshape active (default)
+
+# Running following command will show you the number of deferred emails for each domains…
+qshape deferred
+
+#  flushing entire queue immediately
+postqueue -f
+
+  or 
+
+postfix flush
+
+
+# Delete All 
+postsuper -d ALL 
+
+# Delete All Deferred Mails
+postsuper -d ALL deferred
+
+# Use the following command to view the current postfix MTA queue
+postqueue -p
+
+  or 
+
+mailq
