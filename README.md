@@ -13,10 +13,11 @@ You can clone the repository wherever you want. (I like to keep it in `~/.dotfil
 $ git clone https://gitlab.com/devap/dotfiles.git ~/.dotfiles && cd ~/.dotfiles && ./bootstrap
 ```
 
-change shell to zsh
+change shell to <desired shell>
 
 ```bash
-$ chsh 
+$ chsh -s <shell>
+$ chsh -s /usr/local/bin/fish
 ```
 
 
