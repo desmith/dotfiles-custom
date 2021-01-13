@@ -1,0 +1,58 @@
+# To view the php version:
+php -v
+
+# To view the installed php modules:
+php -m
+
+# To view phpinfo() information:
+php -i
+
+# To lint a php file:
+php -l file.php
+
+# To lint all php files within the cwd:
+find . -name "*.php" -print0 | xargs -0 -n1 -P8 php -l
+
+# To enter an interactive shell:
+php -a
+
+# To locate the system's php.ini files:
+php -i | grep "php.ini"
+
+# To start a local webserver for the cwd on port 3000 (requires php >= 5.4):
+php -S localhost:3000
+
+# php composer
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'e0012edf3e80b6978849f5eff0d4b4e4c79ff1609dd1e613307e16318854d24ae64f26d17af3ef0bf7cfb710ca74755a') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+
+# error debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', TRUE);
+
+
+# time execution of php processes 
+//Store the micro time so that we know
+//when our script started to run.
+$executionStartTime = microtime(true);
+
+//Example code.
+$pdo->query("SELECT id FROM users WHERE email_verified = 0");
+
+//At the end of your code, compare the current
+//microtime to the microtime that we stored
+//at the beginning of the script.
+$executionEndTime = microtime(true);
+ 
+//The result will be in seconds and milliseconds.
+$seconds = $executionEndTime - $executionStartTime;
+ 
+//Print it out
+echo "This script took $seconds to execute.";
+
+# PHP 5.4 or above
+$executionTime = microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"];
+

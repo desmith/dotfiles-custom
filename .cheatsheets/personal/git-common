@@ -1,0 +1,14 @@
+# Rebase often!
+git checkout <upstream_branch>
+git pull
+git checkout -
+git rebase <upstream_branch>
+
+# A cool trick is using git fetch --prune. It doesn't require you to checkout to the upstream branch to update it. I love it.
+
+# Here is a list of the ones I use very often:
+
+git cherry-pick
+git diff and git apply
+git stash
+git bisect

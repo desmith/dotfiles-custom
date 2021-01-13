@@ -1,0 +1,55 @@
++-------------------------+
+|Permission   Octal value |
++-------------------------+
+|rwxrwxrwx    777         |
+|rwxrwxr-x    775         |
+|rwxr-xr-x    755         |
+|rw-rw-rw-    666         |
+|rw-rw-r--    664         |
+|rw-r--r--    644         |
+|rw-rw----    660         |
++-------------------------+
+
+# Add execute for all (myscript.sh)
+chmod a+x myscript.sh
+
+# Set user to read/write/execute, group/global to read only (myscript.sh), symbolic mode
+chmod u=rwx, go=r myscript.sh
+
+# Remove write from user/group/global (myscript.sh), symbolic mode
+chmod a-w myscript.sh
+
+# Remove read/write/execute from user/group/global (myscript.sh), symbolic mode
+chmod = myscript.sh
+
+# Set user to read/write and group/global read (myscript.sh), octal notation
+chmod 644 myscript.sh
+
+# Set user to read/write/execute and group/global read/execute (myscript.sh), octal notation
+chmod 755 myscript.sh
+
+# Set user/group/global to read/write (myscript.sh), octal notation
+chmod 666 myscript.sh
+
+# Roles
+u - user (owner of the file)
+g - group (members of file's group)
+o - global (all users who are not owner and not part of group)
+a - all (all 3 roles above)
+
+# Numeric representations
+7 - full (rwx)
+6 - read and write (rw-)
+5 - read and execute (r-x)
+4 - read only (r--)
+3 - write and execute (-wx)
+2 - write only (-w-)
+1 - execute only (--x)
+0 - none (---)
+
+# changing permissions across folders/files
+644 = rw-r--r--
+755 = rwxr-xr-x
+
+find /path/to/target/folder -type f -exec chmod 644 {} \;  <-- This updates permissions on files
+find /path/to/target/folder -type d -exec chmod 755 {} \;  <-- This updates permissions on folders

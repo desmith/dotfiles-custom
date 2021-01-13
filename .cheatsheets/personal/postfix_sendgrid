@@ -1,0 +1,24 @@
+###
+# https://sendgrid.com/docs/for-developers/sending-email/postfix/
+# Find your Postfix config file, typically /etc/postfix/main.cf, and add the following:
+
+smtp_sasl_auth_enable = yes
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+smtp_sasl_security_options = noanonymous
+smtp_sasl_tls_security_options = noanonymous
+smtp_tls_security_level = encrypt
+header_size_limit = 4096000
+relayhost = [smtp.sendgrid.net]:587
+
+# Now you need to specify your credentials (optionally, use apikey as username and an API Key as password) in the separate file /etc/postfix/sasl_passwd (you'll likely need to create it):
+
+[smtp.sendgrid.net]:587 yourSendGridUsername:yourSendGridPassword
+
+# Next, make sure the file has restricted read and write access only for root, and use the postmap command to update Postfix's hashtables to use this new file:
+
+$ sudo chmod 600 /etc/postfix/sasl_passwd
+$ sudo postmap /etc/postfix/sasl_passwd
+
+# Finally, restart Postfix:
+
+$ sudo systemctl restart postfix

@@ -1,137 +1,151 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env fish
 
-me=${(%):-%N}
-opt_param=$1
+if test (count $argv) -eq 1
+	set opt_param $argv
+else
+	set opt_param ''
+end
 
 cd ~/.dotfiles
 
-platform='unknown'
-unamestr=`uname`
-if [[ "$unamestr" == 'Linux' ]]; then
-  platform='linux'
-  myhome=/home/ubuntu
-elif [[ "$unamestr" == 'Darwin' ]]; then
-  platform='freebsd'
-  myhome=${HOME}
-fi
+set platform unknown
+set unamestr `uname`
+if test $unamestr = 'Linux'
+  set platform linux
+  set myhome /home/ubuntu
+else if test $unamestr = 'Darwin'
+  set platform freebsd
+  set myhome $HOME
+end
 
-DOTDIR="${HOME}/.dotfiles"
+set DOTDIR $HOME/.dotfiles
 
 ### dirs
-dotdirs=(
-  .byobu
-  .certs
-  .cheat
-  .config
-  .gitosis-admin
-  .git-templates
-  .local
-  .nvm
-  .pip
-  .terminfo
-  .tmux
-  .tmuxinator
-)
+set dotdirs \
+  .byobu \
+  .certs \
+  .cheatsheets \
+  .gitosis-admin \
+  .git-templates \
+  .nvm \
+  .pip \
+  .terminfo \
+  .tmuxinator \
+  .vim \
 
 ### files
-dotfiles=(
-  .gemrc
-  .gitconfig
-  .gitattributes
-  .gitignore_global
-  .gitk
-  .inputrc
-  .nvimrc
-  .npmrc
-  .pylintrc
-  .pyhistory
-  .pythonrc.py
-  .python-gitlab.cfg
-  .screenrc
-  stylelint.config.js
-  .tmux.conf
-)
+set dotfiles \
+  .alacritty.yml \
+  .bashrc \
+  .cfnlintrc \
+  .direnvrc \
+  .dockercfg \
+  .editorconfig \
+  .gemrc \
+  .gitconfig \
+  .gitattributes \
+  .gitexcludes \
+  .gitignore \
+  .gitignore_global \
+  .gitk \
+  .hyper.js \
+  .inputrc \
+  .nvimrc \
+  .pylintrc \
+  .pyhistory \
+  .pythonrc.py \
+  .python-gitlab.cfg \
+  .rclone.conf \
+  .screenrc \
+  .serverlessrc \
+  .sublimelinterrc \
+  .taskrc \
+  .tmux.conf \
+  .ungitrc \
+  .wgetrc \
 
-tmpdirs=(
-  ~/.Trash
-)
+set harddirs \
+  .config \
+  .local \
 
+set tmpdirs ~/.Trash
 
-function doIt() {
+function doIt
   echo "running doIt() ..."
 
   mkdir -p ~/.venvs
-  ln -s -f ${DOTDIR}/.venvs/global_requirements.txt ~/.venvs/
+  ln -s -f $DOTDIR/.venvs/global_requirements.txt ~/.venvs/
 
-  for dir in $dotdirs; do
+  for dir in $dotdirs
     echo "creating directory symlink: $dir..."
-    ln -s -f ${DOTDIR}/$dir ~
-  done
+    ln -s -f $DOTDIR/$dir ~
+  end
 
-  for file in $dotfiles; do
+  for dir in $harddirs
+    echo "rsyncing directory: $dir..."
+    rsync -av $DOTDIR/$dir/ ~/$dir/
+  end
+
+  for file in $dotfiles
     echo "creating file symlink: $file..."
-    ln -s -f ${DOTDIR}/$file ~
-  done
+    ln -s -f $DOTDIR/$file ~
+  end
 
-#  if [[ ${platform} == 'linux' ]]; then 
-#    ln -s -f ${DOTDIR}/.aliases_linux ~/.aliases
-#    ln -s -f ${DOTDIR}/.linuxbrew ~
-#  fi
+  if test $platform = 'linux'
+    ln -s -f $DOTDIR/.aliases_linux ~/.aliases
+    ln -s -f $DOTDIR/.linuxbrew ~
+  end
 
-  if [[ ${platform} == 'freebsd' ]]; then
-    ln -s -f ${DOTDIR}/.aliases_osx ~/.aliases
-    ln -s -f ${HOME}/Dropbox/etc ~
-  fi
+  if test $platform = 'freebsd'
+    ln -s -f $DOTDIR/.aliases_osx ~/.aliases
+    ln -s -f $HOME/Dropbox/etc ~
+  end
 
-  for dir in $tmpdirs; do
-    if [[ ! -d $dir ]]; then
+  for dir in $tmpdirs
+    if not test -d $dir
       echo "creating directory $dir..."
       mkdir $dir
-    fi
-  done
+    end
+  end
 
-  echo "done!"
-}
+  echo "Done!"
 
+end
 
-function unDoIt() {
+function unDoIt
   echo "running unDoIt() ..."
-  rm -f ${HOME}/.venvs/global_requirements.txt
+  rm -f $HOME/.venvs/global_requirements.txt
 
-  for dir in $dotdirs; do
+  for dir in $dotdirs
     echo "removing directory symlink: $dir..."
-    rm  -f "${HOME}/$dir"
-  done
+    rm  -rf "$HOME/$dir"
+  end
 
-  for file in $dotfiles; do
+  for file in $dotfiles
     echo "removing file symlink: $file..."
-    rm  -f "${HOME}/$file"
-  done
+    rm  -f "$HOME/$file"
+  end
 
-  for file in $zdotfiles; do
+  for file in $zdotfiles
     echo "removing file symlink: $file..."
-    rm  -f "${HOME}/$file"
-  done
+    rm  -f "$HOME/$file"
+  end
 
-  if [[ ${platform} == 'linux' ]]; then
-    rm -f ${HOME}/.linuxbrew
-  elif [[ ${platform} == 'freebsd' ]]; then
-    rm -f ${HOME}/etc
-  fi
+  if test $platform = 'linux'
+    #rm -f $HOME/.linuxbrew
+  else if test $platform = 'freebsd'
+    rm -f $HOME/etc
+  end
 
   echo "Undone!"
 
-}
+end
 
-echo "\$opt_param: $opt_param"
-
-if [[ $opt_param == 'install' ]]; then
-  doIt
-elif [[ $opt_param == 'remove' ]]; then
+if test $opt_param = 'remove'
   unDoIt
 else
   doIt
-fi
+end
 
-unset doIt
-unset unDoIt
+set -e doIt
+set -e unDoIt

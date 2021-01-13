@@ -1,0 +1,8 @@
+<input list="animals" name="animal" id="animal">
+<datalist id="animals">
+    <option value="Cat">
+    <option value="Dog">
+    <option value="Chicken">
+    <option value="Cow">
+    <option value="Pig">
+  </datalist>

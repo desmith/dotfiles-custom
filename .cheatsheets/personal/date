@@ -1,0 +1,24 @@
+---
+tags: [ date, time ]
+---
+DATE=`date +%Y-%m-%d_%Hh%Mm`▸ ▸ ▸ ▸ # Datestamp e.g 2002-09-21
+DOW=`date +%A`▸ ▸ ▸ ▸ ▸ ▸ ▸ # Day of the week e.g. Monday
+DNOW=`date +%u`▸▸ ▸ ▸ ▸ ▸ # Day number of the week 1 to 7 where 1 represents Monday
+DOM=`date +%d`▸ ▸ ▸ ▸ ▸ ▸ ▸ # Date of the Month e.g. 27
+M=`date +%B`▸ ▸ ▸ ▸ ▸ ▸ ▸ # Month e.g January
+W=`date +%V`▸ ▸ ▸ ▸ ▸ ▸ ▸ # Week Number e.g 37
+
+# Convert Unix timestamp to Date(Linux)
+date -d @1440359821
+
+# Convert Unix timestamp to Date(Mac)
+date -r 1440359821
+
+# Print date in format suitable for affixing to file names
+date +"%Y%m%d_%H%M%S"
+
+# To list UTC time
+date -u
+
+# Show the time on the west coast of the US (use tzselect(1) to find TZ)
+TZ='America/Los_Angeles' date

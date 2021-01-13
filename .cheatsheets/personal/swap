@@ -1,0 +1,33 @@
+https://aws.amazon.com/premiumsupport/knowledge-center/ec2-memory-swap-file/
+
+# Create the file to be used for swap.
+sudo fallocate -l 6G /swapfile
+
+sudo chmod 0600 /swapfile
+
+# If fallocate fails or is not installed, run the following command.
+sudo dd if=/dev/zero of=/swapfile bs=1024 count=1048576
+
+# Format the file for swap.
+sudo mkswap /swapfile
+
+# Add the file to the system as a swap file.
+sudo swapon /swapfile
+
+# Add this line to the end of /etc/fstab to make the change permanent.
+/swapfile  none  swap  sw 0  0
+
+# To change the swappiness value edit /etc/sysctl.conf and add the following line.
+vm.swappiness=10
+
+# Start with a value of 10 and increase if needed. A typical default value for swappiness is 60. The higher the number (up to 100), the more often swap is utilized.
+
+# How much swappiness affects performance depends on how your memory is being used, so experiment to find an optimal value. At 0 the swap file will only be used when the system runs completely out of memory. Higher values let the system swap idle processes out to allow the system to free memory for disk caching, potentially improving overall system performance.
+
+# Check that the swap file was created.
+sudo swapon -s
+
+# Reboot the server to ensure that the changes go into effect.
+
+
+chmod 600 /swapfile

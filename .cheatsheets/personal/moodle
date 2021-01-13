@@ -1,0 +1,4 @@
+### get a forum post resend by changing the following fields for the message in the mdl_forum_posts table:
+
+1) field "mailed" field of the message to 0
+2) field "created" and field "modified" to the current epoch time, using an epoch converter: https://www.epochconverter.com

@@ -1,0 +1,18 @@
+### Migrating a codebase from one repo to another.
+
+# 1. Create repo in CodeCommit:
+$ aws codecommit create-repository --repository-name <repo_name> --repository-description “My migrate repo"
+
+# 2. Clone the original repo:
+$ git clone --mirror https://github.com/awslabs/aws-demo-php-simple-app.git tmpdir
+
+# 3. Push to CodeCommit:
+$ cd tmpdir
+$ git push https://git-codecommit.us-east-2.amazonaws.comMyClonedRepository --all
+
+# 4. Push tags
+$ git push ssh://git-codecommit.us-east-2.amazonaws.com/v1/repos/MyClonedRepository --tags
+
+# 5. Set up Policies and IAM Users…
+
+# 6. Ref: [Migrate a Git Repository to AWS CodeCommit - AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/how-to-migrate-repository-existing.html)

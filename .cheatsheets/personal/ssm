@@ -1,0 +1,21 @@
+### Using ssm parameters with python
+
+import boto3
+
+ssm = boto3.client('ssm')
+parameter = ssm.get_parameter(Name='/Prod/Db/Password', WithDecryption=True)
+print(parameter['Parameter']['Value'])
+
+
+### aws cli 
+aws ssm put-parameter \
+  --name "/PATH/TO/PARAM" \
+  --value "" \
+  --type "String"
+
+aws ssm put-parameter \
+  --name "/PATH/TO/PARAM" \
+  --value "" \
+  --type "SecureString"
+
+

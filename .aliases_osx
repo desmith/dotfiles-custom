@@ -1,0 +1,420 @@
+
+alias pb='pianobar 2>&1 | grep -v API '
+
+# Lock the screen (when going AFK)
+alias afk='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
+alias sleep=afk
+
+# Empty the Trash on all mounted volumes and the main HDD
+# Also, clear Apple’s System Logs to improve shell startup speed
+alias emptytrash='sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl'
+
+# Merge PDF files
+# Usage: `mergepdf -o output.pdf input{1,2,3}.pdf`
+alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py'
+
+# Show/hide hidden files in Finder
+alias show='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
+alias hide='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
+
+# Hide/show all desktop icons (useful when presenting)
+alias hidedesktop='defaults write com.apple.finder CreateDesktop -bool false && killall Finder'
+alias showdesktop='defaults write com.apple.finder CreateDesktop -bool true && killall Finder'
+
+# Flush Directory Service cache
+alias flush='dscacheutil -flushcache && killall -HUP mDNSResponder'
+alias ccache='sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
+
+# Clean up LaunchServices to remove duplicates in the “Open With” menu
+alias lscleanup='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder'
+
+### subvert subl to use Atom
+#alias subl='atom '
+
+### Sublime Text 3 Packages
+alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+alias sublp='open ~/Library/Application\ Support/Sublime\ Text\ 3/Packages'
+alias sublpcd='cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages'
+alias sublpkg='open ~/Library/Application\ Support/Sublime\ Text\ 3/Packages'
+
+alias d='cd ~/Dropbox'
+alias dl='cd ~/Downloads'
+alias dt='cd ~/Desktop'
+alias p='cd ~/projects'
+
+alias sasswatch='sass --watch --scss --sourcemap '
+
+alias bri='brew install '
+# Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
+alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm update npm -g; npm update -g; sudo gem update --system; sudo gem update'
+
+# Trim new lines and copy to clipboard
+#alias c='tr -d '\n' | pbcopy'
+
+# Eject external CD/DVD
+alias deject='echo "ejecting disk..."; /usr/bin/drutil eject'
+alias eject='deject'
+
+# Disable Spotlight
+alias spotoff='sudo mdutil -a -i off'
+# Enable Spotlight
+alias spoton='sudo mdutil -a -i on'
+
+# PlistBuddy alias, because sometimes `defaults` just doesn’t cut it
+alias plistbuddy='/usr/libexec/PlistBuddy'
+
+alias php-fpm.start='launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.php56.plist'
+alias php-fpm.stop='launchctl unload -w ~/Library/LaunchAgents/homebrew.mxcl.php56.plist'
+alias php-fpm.restart='php-fpm.stop && php-fpm.start'
+
+alias mysql.start='brew services start mysql@5.7'
+alias mysql.restart='brew services restart mysql@5.7'
+alias mysql.stop='brew services stop mysql@5.7'
+
+alias nginx.start='sudo launchctl load /Library/LaunchAgents/homebrew.mxcl.nginx.plist'
+alias nginx.stop='sudo launchctl unload /Library/LaunchAgents/homebrew.mxcl.nginx.plist'
+alias nginx.restart='nginx.stop && nginx.start'
+alias nginx.logs.error='tail -250f /usr/local/etc/nginx/logs/error.log'
+alias nginx.logs.access='tail -250f /usr/local/etc/nginx/logs/access.log'
+alias nginx.logs.default.access='tail -250f /usr/local/etc/nginx/logs/default.access.log'
+alias nginx.logs.default-ssl.access='tail -250f /usr/local/etc/nginx/logs/default-ssl.access.log'
+alias nginx.logs.phpmyadmin.error='tail -250f /usr/local/etc/nginx/logs/phpmyadmin.error.log'
+alias nginx.logs.phpmyadmin.access='tail -250f /usr/local/etc/nginx/logs/phpmyadmin.access.log'
+
+alias mq.start='brew services start rabbitmq'
+alias mq.stop='brew services stop rabbitmq'
+alias mq.restart='brew services restart rabbitmq'
+
+alias dircolors='gdircolors'
+
+# Stuff I never really use but cannot delete either because of http://xkcd.com/530/
+alias stfu="osascript -e 'set volume output muted true'"
+alias pumpitup="osascript -e 'set volume 7'"
+
+# Kill all the tabs in Chrome to free up memory
+# [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
+alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
+
+# Lock the screen (when going AFK)
+alias afk='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
+alias ka='k -a'
+alias kA='k -A'
+alias kc='k -c'
+alias kd='k -d'
+alias kn='k -n'
+alias kh='k -h'
+alias kr='k -r'
+alias ks='k -S'
+alias kS='k -S'
+alias kt='k -t'
+alias ku='k -u'
+alias kU='k -U'
+
+# Checking what directories and files are eating your precious disk space is invaluable too, and sorting the output
+alias duf='du -skh .[!.]* * | sort -h'
+
+# Hugo
+alias hs="hugo server --disableFastRender --watch -v"
+
+# To generate a UUID (universally unique identifier) quickly:
+alias uuid="python -c 'import sys,uuid; sys.stdout.write(uuid.uuid4().hex)' | pbcopy && pbpaste && echo"
+
+###
+# Global aliases file (~/.aliases)
+###
+# Use sublimetext for editing config files
+# vim aliases
+alias vi='vim'
+alias viA='via'
+alias vim='nvim'
+alias virc='vi ${DOTDIR}/.vimrc'
+alias vimrc='vim ${DOTDIR}/.config/nvim/init.vim'
+alias vimspace='vim ~/.SpaceVim.d/init.toml'
+alias spacevim='vimspace'
+alias svim='vim ~/.SpaceVim/vimrc'
+
+
+#alias ws='web_search google '
+#alias so='web_search stackoverflow '
+
+# aws aliases
+alias sync3='aws s3 sync --exclude "*.DS_Store*" ./ '
+alias awsi='aws --profile adminuser-icg '
+alias awsg='aws --profile adminuser-govardhana '
+
+
+alias gc='git clone git@gitlab.com:devap/$1'
+alias gpom='git push origin master'
+alias catgit='cat ./.git/config'
+alias gcat='catgit'
+
+#for fat fingers...
+alias pi='pip '
+alias ecoh='echo'
+
+#not sure why we need this, someone is hijacking diff...
+alias diff="/usr/bin/diff "
+
+#alias postgres.start='postgres -D /usr/local/var/postgres'
+#alias postgres.start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+#alias postgres.stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+
+alias psql.start='brew services start postgresql '
+alias psql.stop='brew services stop postgresql '
+alias pqsl.restart='brew services restart postgres '
+alias postgres.start='psql.start '
+alias postgres.stop='psql.stop '
+alias postgres.restart='psql.restart '
+
+# Shortcuts
+
+### Brunch
+alias bb="brunch build"
+alias bbp="brunch build --production"
+alias bw="brunch watch"
+alias bws="brunch watch --server"
+
+alias setvirtualenvpath="echo `pwd -P` > $VIRTUAL_ENV/.project"
+
+# git aliases
+alias gits="git status"
+alias gitpo="git push -u origin master"
+alias gitc="git commit "
+
+# Launchd aliases
+alias lcl="launchctl load -w "
+alias lcu="launchctl unload -w "
+
+#utility aliases
+alias bgc="bgcolors"
+alias cls="clear"
+alias clr="clear"
+alias ip="curl icanhazip.com"  # Your public IP address
+
+alias howto="cheat "
+
+alias la="ls -la"
+alias ..='cd ..'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
+alias .....='cd ../../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../..'
+
+alias path='echo -e ${PATH//:/\\n}'
+alias now='date +"%T"'
+alias curdate='date +"%d-%m-%Y"'
+
+## Browsers ##
+alias firefox='/Applications/Firefox.app/Contents/MacOS/firefox'
+alias chrome='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+alias opera='/Applications/Opera.app/Contents/MacOS/Opera'
+alias safari='/Applications/Safari.app/Contents/MacOS/Safari' 
+#default ff
+alias ff=firefox
+ 
+#default browser
+alias browser=ff
+
+alias pipclear="pip freeze | xargs pip uninstall -y "
+alias pipc="pipclear"
+
+#$cfbackup aliases (still working with Rackspace cloudfiles, just using another utility)
+alias cfpush="cfbackup --action push -rv --config_file ~/.cfbackup.yml --local_path . --container vihe"
+alias cfpull="cfbackup --action pull -rv --config_file ~/.cfbackup.yml --local_path . --container vihe"
+
+
+# Show local ip:
+alias localip="ipconfig getifaddr en0"
+
+# Pretty print XML:
+alias xq="xmllint --format"
+
+# Pretty print JSON:
+#alias jq="jsonlint --format"
+
+# `cat` with beautiful colors. requires: pip install -U Pygments
+alias ccat="pygmentize -O style=borland -f console256 -g"
+alias pcat="pygmentize -f terminal256 -O style=native -g"
+
+alias ssh="TERM=xterm-256color ssh"
+
+alias ssb="ssh bastion"
+alias ssbi="ssh bastion-ic"
+alias ssbo="ssh bastion-ochs"
+
+#django aliases
+alias da="django-admin"
+alias darun="django-admin runserver"
+alias darun_plus="django-admin runserver_plus"
+alias dj="django-admin"
+alias djrun="django-admin runserver"
+alias dastat='echo "running collectstatic --noinput --clear"; django-admin collectstatic --noinput --clear'
+alias dastatlink='echo "running collectstatic --noinput --clear --link"; django-admin collectstatic --noinput --clear --link'
+alias djstart="django_startproj.bash"
+
+### important safety nets
+alias ln="ln -s"
+alias md="mkdir"
+alias mdcd="mkdcd"
+alias pse="ps -ef"
+#alias rm="trash"
+alias rd="trash"
+alias rd="rm -rfi"
+
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -i"
+alias grep="grep -i --color=auto "
+
+alias tailf="tail -f"
+alias tf='tailf'
+alias tfl="tail -f /var/log/messages"
+alias tfm="tail -f /var/log/messages"
+alias tfmsg="tail -f /var/log/messages"
+alias tfmail="tail -f /var/log/maillog"
+alias ur="uname -r"
+
+#fat-finger aliases
+alias ecoh="echo"
+
+# SJAC/Docker
+alias solr5.start="docker container start solr5"
+alias solr5.stop="docker container stop solr5"
+
+#application aliases
+alias apache="apache2"
+
+# Docker
+alias dpsa="docker ps -a"
+alias dcup="docker-compose up"
+alias dcupd="docker-compose up -d"
+alias dcd="docker-compose down"
+alias dcdv="docker-compse down -v"
+
+alias dk="docker "
+alias dkr="dk"
+alias dki="dk images "
+alias dkit="dk image tag "
+alias dmi="dk images "
+alias dkrm="dk rm "
+alias dkrmi="dk rmi"
+alias dkps="dk ps"
+alias dkpsa="dk ps -a"
+
+#alias drmall="docker rm $(docker ps -a -q -f status=exited)"
+alias dcomp="docker-compose "
+alias dcompb="dcomp build "
+alias dcompps="dcomp ps"
+alias dcompd="dcomp down "
+alias dcompdv="dcomp down -v"
+alias dcompup="dcomp up "
+alias dcompupb="dcomp up --build"
+alias dcont="docker container"
+alias dcontls="dcont ls"
+alias dcontlsa="dcont ls -a"
+alias dcontp="dcont prune "
+alias dcontrm="dcont rm "
+
+alias ftp="ftp -i"
+
+alias grpe="grep "
+
+alias net="netstat -an | more"
+alias more="less"
+alias mnode="service munin-node restart"
+alias mreload=" /usr/share/munin/munin-update --force-root"
+alias mupdate=' /usr/share/munin/munin-update --force-root'
+alias lu='nslookup'
+alias more='less'
+alias pear="php /usr/lib/php/pear/pearcmd.php"
+alias pecl="php /usr/lib/php/pear/peclcmd.php"
+
+alias scp='scp -Cp'
+alias rc='sudo red-carpet &'
+alias rp='sudo rpm -Uvvvh'
+alias rpq='sudo rpm -qa | grep'
+alias rps='sudo rpm -qa | grep'
+alias rpe='sudo rpm -e'
+alias tff='tail -f'
+alias tffm='multitail -f'
+alias tfw='tail -f /var/log/httpd/www.prastha.com-access.log'
+alias tm='mmate '
+alias tx='tar xvf'
+alias tz='tar xvfz'
+alias mux='tmuxinator'
+
+#alias tmux='tmux -CC'
+alias zlist='zfs list -t snapshot '
+
+alias yt='ytree'
+
+alias find_spam='grep -r "eval(gzinflate(base64_decode" * '
+alias find_spam='echo "looking for nasty stuff..."; grep -r "eval(gzinflate(base64_decode" * '
+
+
+# Enable aliases to be sudo’ed
+
+# Get week number
+alias week='date +%V'
+
+# Stopwatch
+alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
+
+# IP addresses
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en0"
+alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+
+
+# View HTTP traffic
+alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+
+# MD5sum
+command -v md5sum > /dev/null || alias md5sum="md5"
+
+# OS X has no `sha1sum`, so use `shasum` as a fallback
+command -v sha1sum > /dev/null || alias sha1sum="shasum"
+
+# Recursively delete `.DS_Store` files
+alias rmstore="find . -type f -name '*.DS_Store' -ls -delete"
+
+# URL-encode strings
+alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+
+# Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
+# (useful when executing time-consuming commands)
+alias badge="tput bel"
+
+# Intuitive map function
+# For example, to list all directories that contain a certain file:
+# find . -name .gitattributes | map dirname
+alias map="xargs -n1"
+
+# One of @janmoesen’s ProTip™s
+for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
+		alias "$method"="lwp-request -m '$method'"
+done
+
+# Make Grunt print stack traces by default
+command -v grunt > /dev/null && alias grunt="grunt --stack"
+
+# Reload the shell (i.e. invoke as a login shell)
+alias reload="exec $SHELL -l"
+
+# Faster npm for Europeans
+command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.eu/"
+
+alias ni='npm install'
+alias npmrun='npm run-script'
+alias npmr='npmrun'
+alias nrun='npm-run'
+alias npmbuild='npm run-script build'
+alias npmwatch='npm run-script watch'
+alias npmwatchd='npm run-script watchd'
+alias npmprod='npm run-script prod'
+alias npmb='npmbuild'
+alias npmw='npmwatch'
+alias npmwd='npmwatchd'
+alias npmp='npmprod'

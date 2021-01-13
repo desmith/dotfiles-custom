@@ -1,0 +1,29 @@
+  <?php
+
+ $xml_feed_url = 'feed.rss.xml';
+  if(@simplexml_load_file($xml_feed_url)) {
+    $xml_tree = simplexml_load_file($xml_feed_url);
+  }
+
+  $i=0;
+  if(!empty($xml_tree)) {
+
+  $site = $xml_tree->channel->title;
+  $sitelink = $xml_tree->channel->link;
+
+  foreach ($xml_tree->channel->item as $item) {
+    $title = $item->title;
+    $link = $item->link;
+    if($i>=5) break;
+  ?>
+
+  <li class="feed-item">
+    <a target="_blank" rel="nofollow noopener noreferrer" href="<?php echo $link; ?>"><?php echo $title; ?></a>
+    <div class="wprss-feed-meta"></div>
+  </li>
+
+  <?php
+    $i++;
+    }
+  }
+  ?>

@@ -1,0 +1,22 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::iskconmultimedia-assets/*"
+        },
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::793753096261:user/django-imedia"
+            },
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::iskconmultimedia-assets",
+                "arn:aws:s3:::iskconmultimedia-assets/*"
+            ]
+        }
+    ]
+}

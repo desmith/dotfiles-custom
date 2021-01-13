@@ -1,0 +1,6 @@
+### OS X Only
+echo "loading ~/.config/.osx_exports..."
+#export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk/Contents/Home/jre/
+#export JAVA_HOME=/usr/local/Cellar/ec2-api-tools/1.7.1.0/libexec/lib
+export JAVA_HOME="$(/usr/libexec/java_home)"
+export EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.7.1.0/libexec"

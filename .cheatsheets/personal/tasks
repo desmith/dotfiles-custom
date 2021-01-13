@@ -1,0 +1,32 @@
+# Assign a project to your tasks if possible:
+
+ $ task ID modify project:Home
+
+# Assign due dates where appropriate, for the important tasks:
+
+$ task ID modify due:31st
+
+# Don't overdo this though, as a delay might force you to spend too much time reorganizing everything.
+ When you start working on a task, mark it started:
+
+$ task ID start
+
+# This is a great reminder after a weekend, of what you were doing on Friday that should be continued.
+# If you know the priority of a task:
+
+$ task ID modify priority:M
+
+# But don't fall into the trap of shifting the priorities too often, as you'll waste a lot of time.
+# Add useful tags to a task:
+
+$ task ID modify +problem +house
+
+# This is very useful for filtering.
+# Add the special tag +next to a task, to boost its urgency:
+
+$ task ID modify +next
+
+# Represent dependencies, where appropriate, because there is a big difference in the urgency of a blocking task, than that of a blocked task:
+
+$ task ID modify depends:OTHER_ID
+

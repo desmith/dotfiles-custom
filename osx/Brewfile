@@ -1,0 +1,242 @@
+# Install command-line tools using Homebrew
+# Usage: `brew bundle Brewfile`
+# Or just 'brew bundle' (with Brewfile in the current directory)
+
+# linuxbrew dependancies:
+# sudo apt-get install build-essential curl file git python-setuptools ruby
+
+
+cask_args appdir: '/Applications'
+
+tap 'caskroom/cask'
+tap 'homebrew/boneyard'
+tap 'homebrew/bundle'
+tap 'homebrew/completions'
+tap 'homebrew/core'
+tap 'homebrew/dupes'
+tap 'homebrew/php'
+tap 'homebrew/python'
+tap 'homebrew/science'
+tap 'homebrew/services'
+tap 'homebrew/versions'
+tap 'neovim/neovim'
+
+cask 'java'
+
+brew 'ansible'
+brew 'autoconf'
+brew 'automake'
+brew 'bash'
+brew 'bash-completion'
+brew 'bfg'
+brew 'blackbox'
+brew 'boot2docker'
+brew 'brew-cask-completion'
+brew 'byobu'
+brew 'cheat'
+brew 'clamav'
+brew 'cloog@0.15'
+brew 'cmake'
+brew 'coreutils'
+brew 'cowsay'
+brew 'django-completion'
+brew 'dnsmasq'
+brew 'docker'
+brew 'ec2-api-tools'
+brew 'elasticsearch'
+brew 'erlang'
+brew 'exiftool'
+brew 'faac'
+brew 'faad2'
+brew 'fabric'
+brew 'ffmpeg'
+brew 'findutils'
+brew 'fortune'
+brew 'freetds'
+brew 'freetype'
+brew 'gdbm'
+brew 'gettext'
+brew 'git'
+brew 'gmp'
+brew 'gmp@4'
+brew 'gnu-getopt'
+brew 'gnutls'
+brew 'go'
+brew 'htop-osx'
+brew 'hub'
+brew 'icu4c'
+brew 'imagemagick'
+brew 'iperf'
+brew 'jpeg'
+brew 'jpeg-turbo'
+brew 'json-c'
+brew 'lame'
+brew 'libao'
+brew 'libassuan'
+brew 'libffi'
+brew 'libgcrypt'
+brew 'libgpg-error'
+brew 'libiodbc'
+brew 'libksba'
+brew 'libmagic'
+brew 'libmpc@0.8'
+brew 'libtasn1'
+brew 'libtool'
+brew 'libunistring'
+brew 'libvo-aacenc'
+brew 'libxml2'
+brew 'libxslt'
+brew 'libyaml'
+brew 'little-cms2'
+brew 'mad'
+brew 'makedepend'
+brew 'mariadb'
+brew 'mas'
+brew 'mcrypt'
+brew 'memcached'
+brew 'mhash'
+brew 'mpfr@2'
+brew 'nasm'
+brew 'neovim'
+brew 'nettle'
+brew 'nginx', restart_service: true
+brew 'node'
+brew 'optipng'
+brew 'ossp-uuid'
+brew 'pass'
+brew 'pcre'
+brew 'perl'
+brew 'php71', args: ['with-postgresql', 'with-fpm', 'with-pear']
+brew 'php71-mcrypt'
+brew 'phpmyadmin'
+brew 'phppgadmin'
+brew 'pianobar'
+brew 'pigz'
+brew 'pillow'
+brew 'pinentry'
+brew 'pkg-config'
+brew 'popt'
+brew 'postgresql', restart_service: true
+brew 'postgresql@9.5'
+brew 'ppl@0.11'
+brew 'pth'
+brew 'pwgen'
+brew 'python'
+brew 'python3'
+brew 'rabbitmq'
+brew 'rbenv'
+brew 'rbenv-binstubs'
+brew 'rbenv-use'
+brew 'rbenv-whatis'
+brew 'reattach-to-user-namespace'
+brew 'redis'
+brew 'rsync'
+brew 'ruby'
+brew 'ruby-build'
+brew 's-lang'
+brew 's3cmd'
+brew 'sbt'
+brew 'solr'
+brew 'ssh-copy-id'
+brew 'terminal-notifier'
+brew 'texi2html'
+brew 'tmux'
+brew 'tmuxinator-completion'
+brew 'tokyo-cabinet'
+brew 'trash'
+brew 'tree'
+brew 'unixodbc'
+brew 'vim'
+brew 'webp'
+brew 'wget'
+brew 'wxmac'
+brew 'xvid'
+brew 'yajl'
+brew 'yasm'
+brew 'youtube-dl'
+brew 'z'
+brew 'zeromq'
+brew 'zlib'
+brew 'zopfli'
+brew 'zsh'
+brew 'zsh-autosuggestions'
+brew 'zsh-completions'
+brew 'zsh-navigation-tools'
+
+cask 'google-chrome'
+
+mas '1Password', id: 443987910
+#mas 'Adobe Revel', id: 455068834
+#mas 'Air Media Server', id: 494454344
+#mas 'Air Printer Lite - Print to Any Printer', id: 929399895
+#mas 'Airmail', id: 573171375
+#mas 'Any Video Converter Lite', id: 479472944
+mas 'AnyToDMG', id: 419823161
+#mas 'App for Trello', id: 693021365
+#mas 'ASUS Device Discovery', id: 995124504
+#mas 'Battery Guard', id: 520676829
+#mas 'Battery Health', id: 490192174
+#mas 'Bear', id: 1091189122
+mas 'Caffeine', id: 411246225
+#mas 'Cloud Commander', id: 688839156
+#mas 'CloudApp', id: 417602904
+#mas 'Cobook', id: 525225808
+mas 'Cyberduck', id: 409222199
+#mas 'Delineato Pro', id: 590407707
+#mas 'Droplr', id: 498672703
+#mas 'Duplicate Zapper', id: 858729903
+#mas 'Enqueue', id: 493119959
+#mas 'Epson Label Editor Lite', id: 702826021
+mas 'Ethernet Status', id: 834979136
+mas 'Found', id: 527134927
+#mas 'GarageBand', id: 682658836
+#mas 'Gemini', id: 463541543
+#mas 'Go2Shell', id: 445770608
+mas 'Growl', id: 467939042
+mas 'Hues', id: 411811718
+#mas 'iA Writer Classic', id: 439623248
+#mas 'iCleanMemory', id: 439277582
+#mas 'iMovie', id: 408981434
+#mas 'InternetSpeedTest', id: 1087442457
+#mas 'IP Scanner Home', id: 422293948
+mas 'iThoughtsX', id: 720669838
+#mas 'iZip', id: 478738838
+mas 'JSON Accelerator', id: 511324989
+mas 'Keynote', id: 409183694
+mas 'Kindle', id: 405399194
+mas 'Kiwi for Gmail', id: 986304488
+mas 'LiveReload', id: 482898991
+mas 'Marked 2', id: 890031187
+#mas 'MCSTools-s3', id: 814517168
+#mas 'Memo', id: 454167841
+mas 'Memory Clean', id: 451444120
+mas 'MindNode', id: 992076693
+#mas 'MPlayerX', id: 421131143
+mas 'Music Tag Editor', id: 511170796
+#mas 'Notepad', id: 529763712
+#mas 'Nozbe', id: 508957583
+mas 'Numbers', id: 409203825
+#mas 'OmniGraffle', id: 1142578753
+#mas 'OmniGraffle', id: 711830901
+mas 'One World Dictionary', id: 464285660
+#mas 'OneDrive', id: 823766827
+#mas 'Orbis', id: 412358494
+#mas 'Owly', id: 882812218
+mas 'Pages', id: 409201541
+mas 'Parcel', id: 639968404
+mas 'Power JSON Editor', id: 499768540
+#mas 'RSS Menu', id: 423069534
+#mas 'ShellTo', id: 418075847
+mas 'SiteSucker', id: 442168834
+#mas 'Skitch', id: 425955336
+mas 'Slack', id: 803453959
+#mas 'Snapselect', id: 935700987
+#mas 'Speedy Net', id: 451107779
+mas 'SQLPro for MySQL', id: 899174769
+mas 'The Unarchiver', id: 425424353
+mas 'Things', id: 407951449
+mas 'Toolbox for Keynote', id: 582635628
+mas 'Twitter', id: 409789998
+mas 'TwoTasks', id: 886217333
+mas 'VisualJSON', id: 488709442
+mas 'Zoom', id: 884018914

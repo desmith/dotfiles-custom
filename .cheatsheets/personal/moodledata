@@ -1,0 +1,22 @@
+cd /var/moodledata
+rm -fr ./cache/ ./lock/ ./temp/ ./trashdir/ ./sessions/ ./localcache/ ./muc/
+
+# The "rules" are this...
+
+# 1. The main moodle (code) directory should be readable by the web server user, but must definitely not be writeable (i.e. 777 is bad - you'll get hacked like that)
+
+# 2. The moodledata directory must be readable AND writeable by the web server user (i.e. 777 is ok as log as you trust everybody else that uses the machine or the parent directory is not readable).
+
+# Typical....
+$ chown -R root:root /var/www/moodle
+$ chmod -R 0755 /var/www/moodle
+$ chown -R www-data:www-data /path/to/moodledata
+$ cmod -R 0750 /path/to/moodledata
+
+# obviously substitute as appropriate for your system.
+
+# For the last one to make sense you would also need to set
+
+$CFG->directorypermissions = 02750;
+
+# ...in your config.php as the default is 02777!

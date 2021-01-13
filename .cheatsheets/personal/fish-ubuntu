@@ -1,0 +1,19 @@
+sudo apt-get install software-properties-common
+sudo apt-add-repository ppa:fish-shell/release-3
+sudo add-apt-repository ppa:neovim-ppa/stable
+sudo apt-get update && sudo apt-get upgrade
+sudo apt-get install direnv fish grc neovim xdg-utils
+sudo chsh -s /usr/bin/fish
+
+aws s3 sync s3://icg-aws/.dotfiles-ubuntu/ ~/.dotfiles/
+curl https://pyenv.run | bash
+pyenv install 3.8.1
+pyenv install 3.7.6
+pyenv global 3.7.6
+pip install aws virtualfish
+
+lsblk
+df -h
+sudo resize2fs /dev/nvme0n1p1
+sudo growpart /dev/nvme0n1 1
+sudo xfs_growfs -d <mount point>

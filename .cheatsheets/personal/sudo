@@ -1,0 +1,7 @@
+# Preserve user environment when running command
+sudo -E <cmd>
+
+# Running a command as another user
+sudo -H -u otheruser bash -c 'echo "I am $USER, with uid $UID"'
+
+sudo -H -u www-data bash -c '/usr/bin/php5.6 /var/www/courses.ochsonline.org/admin/cli/cron.php'

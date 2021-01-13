@@ -1,0 +1,38 @@
+# Create a new folder for demo purposes.
+$ mkdir ~/my-project
+$ cd ~/my-project
+
+# Show that the FOO environment variable is not loaded.
+$ echo ${FOO-nope}
+nope
+
+# Create a new .envrc. This file is bash code that is going to be loaded by
+# direnv.
+$ echo export FOO=foo > .envrc
+.envrc is not allowed
+
+# The security mechanism didn't allow to load the .envrc. Since we trust it,
+# let's allow it's execution.
+$ direnv allow .
+direnv: reloading
+direnv: loading .envrc
+direnv export: +FOO
+
+# Show that the FOO environment variable is loaded.
+$ echo ${FOO-nope}
+foo
+
+# Exit the project
+$ cd ..
+direnv: unloading
+
+# And now FOO is unset again
+$ echo ${FOO-nope}
+nope
+
+# The stdlib
+
+# Exporting variables by hand is a bit repetitive so direnv provides a set of utility functions that are made available in the context of the .envrc file.
+# As an example, the PATH_add function is used to expand and prepend a path to the $PATH environment variable. Instead of export PATH=$PWD/bin:$PATH you can write PATH_add bin. It’s shorter and avoids a common mistake where $PATH=bin.
+PATH_add bin
+

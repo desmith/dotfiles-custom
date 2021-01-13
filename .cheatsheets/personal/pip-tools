@@ -1,0 +1,6 @@
+# in a path with a Pipfile and Pipfile.lock
+# prereqs: `pip install toml pip-tools`
+
+### convert Pipfile.lock to requirements.in
+
+curl -sSL https://raw.githubusercontent.com/nicktimko/pipenv2tools/master/pipenv2tools | python -

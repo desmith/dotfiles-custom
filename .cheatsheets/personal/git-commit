@@ -1,0 +1,16 @@
+# An abbreviated description:
+[type]([scope]): [description of change]
+
+[Explanation of changes]
+
+[#ISSUE NUMBER]
+
+# This can amount to something like:
+feat(blog): Add descriptions to blog reel
+
+  - Add descriptions to GraphQL Fragments and queries
+  - Add description to BlogReelItem container
+  - Add descriptions to test fixtures
+  - Update tests
+
+[#3]

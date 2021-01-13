@@ -1,0 +1,15 @@
+# EFS Mounts
+fs-9ea29a1f.efs.us-east-1.amazonaws.com:/ /mnt/efs nfs4 defaults,_netdev 0 0
+
+#-t nfs4
+#-o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport
+
+LABEL=cloudimg-rootfs	/	 ext4	defaults,discard	0 0
+
+### docroots & data
+UUID=5dc94a62-ec57-4add-8424-0e721b9a5d0b /mnt/www  auto  defaults,nofail  0  2
+#/dev/xvdw   /mnt/www        auto    defaults,nobootwait,noatime     0   0
+
+### backups ###
+UUID=8cca0858-60eb-4da2-ad8c-41718b399120 /mnt/backups  auto  defaults,nofail  0  2
+#/dev/xvdf /mnt/backups          auto    defaults,nobootwait,noatime     0   0
