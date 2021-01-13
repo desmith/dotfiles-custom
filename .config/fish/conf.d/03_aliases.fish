@@ -11,10 +11,6 @@ abbr spoton 'sudo mdutil -a -i on'  # Enable Spotlight
 abbr ssh 'set TERM "xterm-256color"; ssh'
 abbr stopenv 'deactivate'
 #abbr ssh 'env TERM=xterm-256color ssh'
-# create ssh tunnel for accessing phpMyAdmin on un.iskcon.org
-abbr ssh-tunnel-pma.un.iskcon.org 'echo "visit https://127.0.0.1:8888/phpmyadmin"; ssh -N -L 8888:127.0.0.1:443 -i IC-un.pem  bitnami@un.iskcon.org'
-
-abbr sshconf 'subl ~/.ssh'
 
 abbr pw 'ps -efl | sha256sum | base64 | head -c 32'
 # apps
@@ -191,24 +187,6 @@ abbr gffs 'git flow feature finish'
 abbr gfh 'git flow hotfix'
 abbr gfhs 'git flow hotfix finish'
 
-
-# homebrew
-abbr bi 'brew install'
-abbr bri 'brew install'
-abbr get 'brew install'
-abbr bs 'brew search'
-abbr bud 'brew update'
-abbr bug 'brew upgrade'
-abbr bd 'brew doctor'
-abbr bl 'brew list'
-abbr bu 'brew uninstall'
-
-# homebrew cask
-abbr bci 'brew cask install'
-abbr bcs 'brew cask search'
-abbr bcia 'brew cask install --appdir "/Applications"'
-abbr getapp 'brew cask install --appdir "/Applications"'
-
 # postgresql
 abbr pgstart 'pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 abbr pgstop 'pg_ctl -D /usr/local/var/postgres stop -s -m fast'
@@ -222,10 +200,6 @@ abbr gr 'grunt'
 abbr grus 'grunt serve'
 abbr grub 'grunt build'
 
-# pianobar (pandora cli)
-abbr pandora pianobar
-abbr pb 'pianobar 2>&1 | grep -v API'
-
 # youtube-dl | http://rg3.github.io/youtube-dl/
 abbr ytdl 'youtube-dl'
 abbr ytmp3 'youtube-dl --extract-audio --audio-format mp3'
@@ -236,6 +210,33 @@ abbr exiftime "exiftool -time:all -s" # show all time attrs
 abbr exifval "exiftool -s -s -s" # just print value(s)
 
 switch (uname)
+	case Darwin
+		# create ssh tunnel for accessing phpMyAdmin on un.iskcon.org
+		abbr ssh-tunnel-pma.un.iskcon.org 'echo "visit https://127.0.0.1:8888/phpmyadmin"; ssh -N -L 8888:127.0.0.1:443 -i IC-un.pem  bitnami@un.iskcon.org'
+
+		abbr sshconf 'subl ~/.ssh'
+
+		# homebrew
+		abbr bi 'brew install'
+		abbr bri 'brew install'
+		abbr get 'brew install'
+		abbr bs 'brew search'
+		abbr bud 'brew update'
+		abbr bug 'brew upgrade'
+		abbr bd 'brew doctor'
+		abbr bl 'brew list'
+		abbr bu 'brew uninstall'
+
+		# homebrew cask
+		abbr bci 'brew cask install'
+		abbr bcs 'brew cask search'
+		abbr bcia 'brew cask install --appdir "/Applications"'
+		abbr getapp 'brew cask install --appdir "/Applications"'
+
+		# pianobar (pandora cli)
+		abbr pandora pianobar
+		abbr pb 'pianobar 2>&1 | grep -v API'
+
 	case Linux
 		abbr pbcopy 'xclip -selection clipboard'
 		abbr pbpaste 'xclip -selection clipboard -o'

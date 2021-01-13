@@ -3,6 +3,8 @@ set -g -x fish_greeting '
 	Hare Rama Hare Rama Rama Rama Hare Hare!
 '
 
+direnv hook fish | source
+
 #omf: load virtualfish with plugins
 #eval (python -m virtualfish auto_activation compat_aliases global_requirements projects)
 

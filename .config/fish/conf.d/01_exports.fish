@@ -86,9 +86,10 @@ switch (uname)
 	  set -gx EDIT_CMD rsub
 
 	case Darwin
+		source ~/.env-tokens
+		#set -gx HOMEBREW_GITHUB_API_TOKEN (moved into .env-tokens)
 		set -gx HOMEBREW_CASK_OPTS "--appdir=/Applications";
 		set -gx	HOMEBREW_NO_AUTO_UPDATE 1
-		set -gx HOMEBREW_GITHUB_API_TOKEN "c1a6080629297eb5b863f32454bb69dca3173d6d"
 		set -gx BROWSER open
 		set -gx EDIT_CMD code
 

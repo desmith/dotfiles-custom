@@ -42,8 +42,6 @@ fish_history
 ehthumbs.db
 Thumbs.db
 
-.vim/backups
-
 .zsh/.zcompdump*
 .zsh/.zcompdump.zwc
 .zsh/.zsh_history
