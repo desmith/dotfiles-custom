@@ -8,11 +8,13 @@ module.exports = {
     // or `'canary'` for less polished but more frequent updates
     updateChannel: 'stable',
 
-    // default font size in pixels for all tabs
-    fontSize: 12,
+    activeTab: '🦊 ',
 
+    // default font size in pixels for all tabs
+    fontSize: 14,
+    lineHeight: 1.2,
     // font family with optional fallbacks
-    fontFamily: '"mononoki nerd font", monofur, monospace',
+    fontFamily: '"FiraCode Nerd Font, Mononoki nerd font", monofur, monospace',
 
     // default font weight: 'normal' or 'bold'
     fontWeight: 'normal',
@@ -132,12 +134,15 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
-    "hypercwd",
     "hyper-search",
     "hyper-pane",
     "hyper-tabs-enhanced",
     "verminal",
-    "hyper-material-theme"
+    "hyper-material-theme",
+    "hyper-one-dark",
+    "hyper-font-ligatures",
+    "hyper-active-tab",
+    "hyper-samewd"
   ],
 
   // in development, you can create a directory under

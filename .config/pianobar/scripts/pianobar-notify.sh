@@ -28,33 +28,33 @@
 # pianobar config file.
 #
 # Also check if this matches you config folder
-fold="$XDG_CONFIG_HOME/pianobar"
+fldr="$XDG_CONFIG_HOME/pianobar"
 
 # You should also place the control-pianobar.sh script in the
 # config folder (or modify the following variable accordingly).
-controlpianobar="$fold/control-pianobar.sh"
+controlpianobar="$fldr/scripts/control-pianobar.sh"
 
 # Also place the pandora.jpg file in the same folder, or modify de
 # following variable.
-blankicon="$fold/pandora.jpg"
+blankicon="$fldr/pandora.jpg"
 
 # Some of the following was copied from eventcmd.sh
-if [[ "$fold" == "/pianobar" ]]; then
-    fold="$HOME/.config/pianobar"
-    blankicon="$fold""$blankicon"
+if [[ "$fldr" == "/pianobar" ]]; then
+    fldr="$HOME/.config/pianobar"
+    blankicon="$fldr""$blankicon"
 fi
 notify="notify-send --hint=int:transient:1"
 zenity="zenity"
-logf="$fold/log"
-ctlf="$fold/ctl"
-an="$fold/artname"
-np="$fold/nowplaying"
-ds="$fold/durationstation"
-dse="$fold/durationstationexplain"
-su="$fold/showupcoming"
-stl="$fold/stationlist"
-ip="$fold/isplaying"
-ine="$fold/ignextevent"
+logf="$fldr/log"
+ctlf="$fldr/ctl"
+an="$fldr/artname"
+np="$fldr/nowplaying"
+ds="$fldr/durationstation"
+dse="$fldr/durationstationexplain"
+su="$fldr/showupcoming"
+stl="$fldr/stationlist"
+ip="$fldr/isplaying"
+ine="$fldr/ignextevent"
 
 while read L; do
     k="`echo "$L" | cut -d '=' -f 1`"
@@ -99,18 +99,18 @@ echo "$artist - $title $like" > "$np"
 case "$1" in
     songstart)
 	   echo "1" > "$ip"
-	   cd "$fold/albumart"
+	   cd "$fldr/albumart"
 
 	   if [[ ! -e "$icon" ]]; then
 
 		  if [[ -n "$coverArt" ]]; then
 			 wget -q -O "$icon" "$coverArt"
-			 echo "$fold/albumart/$icon" > $an
+			 echo "$fldr/albumart/$icon" > $an
 		  else
 			 echo "$blankicon" > $an
 		  fi
 	   else
-		  echo "$fold/albumart/$icon" > $an
+		  echo "$fldr/albumart/$icon" > $an
 	   fi
 
 	   $notify -t 7000 -i "`cat $an`" "`cat $np`" "`cat $ds`"
@@ -120,12 +120,12 @@ case "$1" in
 		  $controlpianobar u 7 &
 		  rm -f "$su"
 	   fi;;
-    
+
     songexplain)
 	   cp "$ds" "$dse"
 	   tail -1 "$logf" | grep --text "(i) We're" | sed 's/.*(i).*features/*/' | sed 's/,/\n*/g' | sed 's/and \([^,]*\)\./\n* \1/' | sed 's/\* many other similarities.*/* and more./' >> "$dse"
 	   $notify -t 15000 -i "`cat $an`" "`cat $np`" "`cat $dse`";;
-    
+
     songlove)
 	   if [[ -e "$ine" ]]; then
 		  $notify -t 2500 "Song Liked" ""
@@ -133,7 +133,7 @@ case "$1" in
 	   else
 		  $notify -t 2500 -i "`cat $an`" "Song Liked" "$artist - $title"
 	   fi;;
-    
+
     songban)
 	   if [[ -e "$ine" ]]; then
 		  $notify -t 2500 "Song Banned" ""
@@ -141,7 +141,7 @@ case "$1" in
 	   else
 		  $notify -t 2500 -i "`cat $an`" "Song Banned" "$artist - $title"
 	   fi;;
-    
+
     songshelf)
 	   if [[ -e "$ine" ]]; then
 		  $notify -t 2500 "Song Put Away" ""
@@ -149,10 +149,10 @@ case "$1" in
 	   else
 		  $notify -t 2500 -i "`cat $an`" "Song Put Away" "$artist - $title"
 	   fi;;
-    
+
     stationfetchplaylist)
 	   echo "1" > "$su";;
-    
+
     usergetstations)
 	   if [[ $stationCount -gt 0 ]]; then
 		  rm -f "$stl"
@@ -162,7 +162,7 @@ case "$1" in
 	   fi
 	   echo "$($zenity --entry --title="Switch Station" --text="$(cat "$stl")")" > "$ctlf"
 	   ;;
-    
+
     userlogin)
 	   if [ "$pRet" -ne 1 ]; then
 		  $notify -t 1500 "Login ERROR 1" "$pRetStr"
@@ -181,10 +181,10 @@ case "$1" in
 		  $notify -t 2000 "Login Successful" "Fetching Stations..."
 	   fi
 	   ;;
-    
+
     songfinish)
 	   exit;;
-    
+
     *)
 	   if [ "$pRet" -ne 1 ]; then
 		  $notify -i "$blankicon" "Pianobar - ERROR" "$1 failed: $pRetStr"

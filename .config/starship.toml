@@ -1,0 +1,40 @@
+[hostname]
+ssh_only = false
+style = "green"
+format = "[$hostname]($style)"
+
+[line_break]
+disabled = false
+
+[memory_usage]
+disabled = false
+show_percentage = true
+show_swap = true
+threshold = -1
+#symbol = " "
+separator = "/"
+style = "bold dimmed green"
+
+[nix_shell]
+disabled = false
+impure_msg = "[impure shell](bold red)"
+pure_msg = "[pure shell](bold green)"
+format = "via [☃️ $state( \\($name\\))](bold blue) "
+
+[package]
+disabled = false
+
+[username]
+show_always = true
+style_root = "bold red"
+style_user = "purple"
+format = "[$user]($style)"
+
+[shlvl]
+disabled = false
+format = "$shlvl level(s) down"
+threshold = 2
+
+[time]
+disabled = false
+style = "blue"

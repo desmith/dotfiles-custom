@@ -28,9 +28,6 @@ set -gx TERM xterm
 # Don’t clear the screen after quitting a manual page
 set -gx MANPAGER "less -X";
 
-# Always enable colored `grep` output
-#set -gx GREP_OPTIONS "--color=auto";
-
 set -gx DJANGO_COLORS dark
 
 set -gx SSH_KEY_PATH "~/.ssh/id_rsa"
@@ -55,8 +52,8 @@ set -gx PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV true
 set -gx VIRTUALFISH_COMPAT_ALIASES true
 set -gx VIRTUALFISH_ACTIVATION_FILE .venv
 set -gx VIRTUALFISH_HOME ~/.venvs
-set -gx PROJECT_HOME ~/projects
-set -gx WORKON_HOME ~/.venvs
+set -gx PROJECT_HOME ~/Dropbox/projects
+#set -gx WORKON_HOME ~/.venvs
 #set -gx PIP_REQUIRE_VIRTUALENV true
 set -gx PIP_RESPECT_VIRTUALENV true
 # export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
@@ -87,13 +84,19 @@ switch (uname)
 	  set -gx JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64/jre
 	  set -gx EC2_HOME "/usr/local/ec2"
 	  set -gx EDIT_CMD rsub
+
 	case Darwin
 		set -gx HOMEBREW_CASK_OPTS "--appdir=/Applications";
+		set -gx	HOMEBREW_NO_AUTO_UPDATE 1
 		set -gx HOMEBREW_GITHUB_API_TOKEN "c1a6080629297eb5b863f32454bb69dca3173d6d"
 		set -gx BROWSER open
-		set -gx EDIT_CMD subl
+		set -gx EDIT_CMD code
+
+        source ~/bin/pyenv_libs
+
 	case FreeBSD NetBSD DragonFly
 		echo FreeBSD NetBSD DragonFly
+
 	case '*'
 		echo Hi, stranger!
 end

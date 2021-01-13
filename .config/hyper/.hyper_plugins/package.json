@@ -12,6 +12,9 @@
     "hyper-pane": "latest",
     "hyper-tabs-enhanced": "latest",
     "verminal": "latest",
-    "hyper-material-theme": "latest"
+    "hyper-material-theme": "latest",
+    "hyper-one-dark": "latest",
+    "hyper-font-ligatures": "latest",
+    "hyper-active-tab": "latest"
   }
 }

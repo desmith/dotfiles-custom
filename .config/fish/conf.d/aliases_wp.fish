@@ -48,6 +48,6 @@ abbr wptsearch "wp theme search" # Search the wordpress.org theme repository.
 abbr wpts "wp theme status" # See the status of one or all themes.
 abbr wptu "wp theme update" # Update one or more themes.
 abbr wpmig "wp wpmdb migrate" # wp migrate db pro cli
-#abbr wpsalt "curl 'https://api.wordpress.org/secret-key/1.1/salt/' | eval $CLIPBOARD; echo 'Keys copied to clipboard!'"
+# abbr wpsalt "curl 'https://api.wordpress.org/secret-key/1.1/salt/' | eval $CLIPBOARD; echo 'Keys copied to clipboard!'"
 
-abbr wpsalt "curl 'https://api.wordpress.org/secret-key/1.1/salt/' | xclip -selection clipboard; echo 'Keys copied to clipboard!';"
+abbr wpsalt curl\ \'https://api.wordpress.org/secret-key/1.1/salt/\'\ \|\ pbcopy\ \;\ echo\ \'Keys\ copied\ to\ clipboard!\'

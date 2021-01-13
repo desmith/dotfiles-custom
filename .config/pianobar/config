@@ -7,18 +7,18 @@ audio_quality = high
 user = desmith@gmail.com
 password = vrnda108
 
-fifo = /etc/pianobar/ctl
+fifo = ~/.config/pianobar/etc/pianobar/ctl
 #volume = 0
 
 #GHari
-#autostart_station = 226976974248549343
+autostart_station = 226976974248549343
 
 #Rodriguez
 #autostart_station = 2017345842616671199
 
-event_command = /etc/pianobar/scripts/pianobar-notify.rb
+event_command = ~/.config/pianobar/scripts/pianobar-notify.sh
+#event_command = /etc/pianobar/scripts/pianobar-notify.rb
 #event_command = /etc/pianobar/scripts/eventReciever.py
-#event_command = /etc/pianobar/scripts/pianobar-notify.sh
 
 # Keybindings
 #act_help = ?
