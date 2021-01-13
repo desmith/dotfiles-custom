@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 cd ~/.dotfiles
-aws s3 sync s3://icg-aws/.dotfiles-ubuntu/ ./
+aws --profile ICGAdmin s3 sync s3://icg-aws/.dotfiles/ ./
