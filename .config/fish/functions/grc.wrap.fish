@@ -10,5 +10,5 @@ function grc.wrap -a executable
   set optionsvariable "grcplugin_"$executable
   set options $$optionsvariable
 
-  command grc -es --colour=auto $executable $options $arguments
+  command grc -s --colour=auto $executable $options $arguments
 end

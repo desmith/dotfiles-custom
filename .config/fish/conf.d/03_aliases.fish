@@ -103,12 +103,10 @@ abbr .5 'cd ../../../../..'  # up five
 abbr cdf 'cd $FISHDIR'
 abbr fdir 'cd $FISHDIR'
 
-abbr l 'exa -l'
-abbr la 'exa -la'
-abbr latr 'exa -la -sold'
-abbr ls 'exa '
-#abbr l 'ls -la'
-#abbr latr 'ls -latr'
+abbr l 'ls -la'
+abbr la 'ls -laF'
+abbr latr 'ls -latr'
+
 abbr cls clear
 abbr clr clear
 abbr cp 'cp -iv'
@@ -215,6 +213,11 @@ switch (uname)
 		abbr ssh-tunnel-pma.un.iskcon.org 'echo "visit https://127.0.0.1:8888/phpmyadmin"; ssh -N -L 8888:127.0.0.1:443 -i IC-un.pem  bitnami@un.iskcon.org'
 
 		abbr sshconf 'subl ~/.ssh'
+
+    abbr l 'exa -l'
+    abbr la 'exa -la'
+    abbr latr 'exa -la -sold'
+    abbr ls 'exa '
 
 		# homebrew
 		abbr bi 'brew install'

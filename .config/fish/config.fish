@@ -23,10 +23,16 @@ fish_vi_key_bindings
 #set -g fish_user_paths "/usr/local/opt/node@12/bin" $fish_user_paths
 set -g fish_user_paths "/usr/local/opt/node@14/bin" $fish_user_paths
 
-if test -d (brew --prefix)"/share/fish/completions"
-    set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
+switch (uname)
+	case Linux
+
+	case Darwin
+		if test -d (brew --prefix)"/share/fish/completions"
+			set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
+		end
+		if test -d (brew --prefix)"/share/fish/vendor_completions.d"
+			set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+		end
+
 end
 
-if test -d (brew --prefix)"/share/fish/vendor_completions.d"
-    set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
-end
