@@ -1,0 +1,6 @@
+#Find the commit which contains the version you want
+git log --oneline
+
+# Revert the file
+git checkout <version_id> -- <file>
+
