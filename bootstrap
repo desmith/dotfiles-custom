@@ -63,9 +63,8 @@ set dotfiles \
 	.wgetrc \
 
 set harddirs \
-	.config
-
-#	.local \
+	.config \
+	.local
 
 set omf_plugins \
 	age \
