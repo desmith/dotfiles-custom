@@ -92,14 +92,12 @@ function doIt
 	if test $platform = 'linux'
 		echo "platform = linux"
 		ln -s -f $DOTDIR/.aliases_linux ~/.aliases
-		ln -s -f $DOTDIR/.linuxbrew ~
-	else
-		echo "platform NOT linux"
-	end
-
-	if test $platform = 'freebsd'
+	elif test $platform = 'freebsd'
+		echo "platform = freebsd"
 		ln -s -f $DOTDIR/.aliases_osx ~/.aliases
 		ln -s -f $HOME/Dropbox/etc ~
+	else
+		echo "platform NOT linux OR freebsd"
 	end
 
 	for dir in $tmpdirs
@@ -144,3 +142,6 @@ end
 
 set -e doIt
 set -e unDoIt
+
+find $DOTDIR/ -name fish_variables -delete
+find $HOME/.config/ -name fish_variables -delete
