@@ -127,8 +127,8 @@ function doIt
 	end
 
 	echo "Installing omf..."
-	curl -sL https://get.oh-my.fish > install_omf
-	chmod +x install_omf
+	#curl -sL https://get.oh-my.fish > install_omf
+	#chmod +x install_omf
 	#./install_omf --noninteractive
 	fish install_omf --noninteractive
 
