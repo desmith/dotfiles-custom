@@ -8,16 +8,6 @@ end
 
 cd ~/.dotfiles
 
-set -g platform unknown
-set unamestr `uname`
-if test $unamestr = 'Linux'
-	set -g platform linux
-	set -g myhome /home/ubuntu
-else if test $unamestr = 'Darwin'
-	set -g platform freebsd
-	set -g myhome $HOME
-end
-
 set DOTDIR $HOME/.dotfiles
 
 ### dirs
@@ -72,6 +62,14 @@ set tmpdirs ~/.Trash
 
 function doIt
 	echo "running doIt() ..."
+
+	set platform unknown
+	set unamestr `uname`
+	if test $unamestr = 'Linux'
+		set platform linux
+	else if test $unamestr = 'Darwin'
+		set platform freebsd
+	end
 
 	mkdir -p ~/.venvs
 	ln -s -f $DOTDIR/.venvs/global_requirements.txt ~/.venvs/
@@ -132,12 +130,6 @@ function unDoIt
 	for file in $zdotfiles
 		echo "removing file symlink: $file..."
 		rm  -f "$HOME/$file"
-	end
-
-	if test $platform = 'linux'
-		#rm -f $HOME/.linuxbrew
-	else if test $platform = 'freebsd'
-		rm -f $HOME/etc
 	end
 
 	echo "Undone!"
