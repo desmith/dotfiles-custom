@@ -12,6 +12,7 @@ fish_history
 *.exe
 *.o
 *.so
+.nvimlog
 
 # Packages #
 ############
