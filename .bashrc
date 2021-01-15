@@ -2,12 +2,14 @@
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-  . /etc/bashrc
+	. /etc/bashrc
 fi
 
 if [ -f ~/.aliases ]; then
-  . ~/.aliases
+	. ~/.aliases
 fi
+
+export PATH=$PATH:/usr/local/bin
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
@@ -21,7 +23,6 @@ fi
 # Brown       0;33     Yellow       1;33
 # Light Gray  0;37     White        1;37
 
-
 # User specific aliases and functions
 # Colour codes are cumbersome, so let's name them
 #txtcyn='\[\e[0;96m\]' # Cyan
@@ -31,7 +32,7 @@ txtyel='\[\e[0;33m\]' # Cyan
 txtblu='\[\e[0;34m\]' # Cyan
 txtpur='\[\e[0;35m\]' # Purple
 txtwht='\[\e[0;37m\]' # White
-txtrst='\[\e[0m\]' # Text Reset
+txtrst='\[\e[0m\]'    # Text Reset
 
 # Which (C)olour for what part of the prompt?
 pathC="${txtblu}"
@@ -42,7 +43,7 @@ pointerC="${txtwht}"
 normalC="${txtrst}"
 # Get the name of our branch and put parenthesis around it
 gitBranch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+	git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 # Build the prompt
 export PS1="${userC}\u${txtwht}@${hostC}\h:${pathC}\w ${gitC}\$(gitBranch) ${pointerC}\n\t \$${normalC} "
