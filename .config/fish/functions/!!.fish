@@ -1,4 +1,4 @@
-function !!;
+function !!
 	set var (history | head -n 1)
 	if test $argv
 		if test $argv = "sudo"   #; or "any other command you want to prepend"

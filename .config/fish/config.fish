@@ -21,7 +21,7 @@ fish_vi_key_bindings
 #echo "config.fish done"
 
 #set -g fish_user_paths "/usr/local/opt/node@12/bin" $fish_user_paths
-set -g fish_user_paths "/usr/local/opt/node@14/bin" $fish_user_paths
+#set -g fish_user_paths "/usr/local/opt/node@14/bin" $fish_user_paths
 
 switch (uname)
 
@@ -34,4 +34,3 @@ switch (uname)
 		end
 
 end
-

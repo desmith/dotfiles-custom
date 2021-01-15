@@ -6,6 +6,14 @@ else
 	set opt_param ''
 end
 
+set platform unknown
+set unamestr (uname)
+if test $unamestr = 'Linux'
+	set platform linux
+else if test $unamestr = 'Darwin'
+	set platform freebsd
+end
+
 cd ~/.dotfiles
 
 set DOTDIR $HOME/.dotfiles
@@ -55,21 +63,32 @@ set dotfiles \
 	.wgetrc \
 
 set harddirs \
-	.config \
-	.local \
+	.config
+
+#	.local \
+
+set omf_plugins \
+	age \
+	argu \
+	aws \
+	config \
+	direnv \
+	expand \
+	extract \
+	jump \
+	pj \
+	pyenv \
+	python \
+	spark \
+	weather \
+
+
+#	z
 
 set tmpdirs ~/.Trash
 
 function doIt
 	echo "running doIt() ..."
-
-	set platform unknown
-	set unamestr (uname)
-	if test $unamestr = 'Linux'
-		set platform linux
-	else if test $unamestr = 'Darwin'
-		set platform freebsd
-	end
 
 	mkdir -p ~/.venvs
 	ln -s -f $DOTDIR/.venvs/global_requirements.txt ~/.venvs/
@@ -107,6 +126,28 @@ function doIt
 		end
 	end
 
+	echo "Installing omf..."
+	curl -L https://get.oh-my.fish > install_omf
+	chmod +x install_omf
+	#./install_omf --noninteractive
+	fish install_omf --noninteractive
+
+	source $HOME/.local/share/omf/init.fish
+	echo "Installing bira theme..."
+	omf install bira
+	omf theme bira
+
+	echo "Installing omf plugins:"
+	for plugin in $omf_plugins
+		echo "Installing $plugin..."
+		omf install $plugin
+	end
+	exit
+
+	echo "Installing fisher..."
+	curl -sL https://git.io/fisher | source && fisher update
+
+	cd
 	echo "Done!"
 
 end
