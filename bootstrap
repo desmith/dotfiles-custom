@@ -64,7 +64,7 @@ function doIt
 	echo "running doIt() ..."
 
 	set platform unknown
-	set unamestr `uname`
+	set unamestr (uname)
 	if test $unamestr = 'Linux'
 		set platform linux
 	else if test $unamestr = 'Darwin'
