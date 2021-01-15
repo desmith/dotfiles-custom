@@ -1,1 +1,1 @@
-/Users/devaprastha/.local/share/omf/themes/bira/fish_prompt.fish
+../../../.local/share/omf/themes/bira/fish_prompt.fish
