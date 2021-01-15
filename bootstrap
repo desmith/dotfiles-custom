@@ -92,7 +92,7 @@ function doIt
 	if test $platform = 'linux'
 		echo "platform = linux"
 		ln -s -f $DOTDIR/.aliases_linux ~/.aliases
-	elif test $platform = 'freebsd'
+	else if test $platform = 'freebsd'
 		echo "platform = freebsd"
 		ln -s -f $DOTDIR/.aliases_osx ~/.aliases
 		ln -s -f $HOME/Dropbox/etc ~
