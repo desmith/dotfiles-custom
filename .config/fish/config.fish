@@ -24,7 +24,6 @@ fish_vi_key_bindings
 set -g fish_user_paths "/usr/local/opt/node@14/bin" $fish_user_paths
 
 switch (uname)
-	case Linux
 
 	case Darwin
 		if test -d (brew --prefix)"/share/fish/completions"
