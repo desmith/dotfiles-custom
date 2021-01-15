@@ -1,15 +1,17 @@
 function grc.wrap -a executable
-  set executable $argv[1]
-  
-  if test (count $argv) -gt 1
-    set arguments $argv[2..(count $argv)]
-  else
-    set arguments
-  end
+	switch (uname)
+		case Darwin
+			set executable $argv[1]
 
-  set optionsvariable "grcplugin_"$executable
-  set options $$optionsvariable
+		  if test (count $argv) -gt 1
+		    set arguments $argv[2..(count $argv)]
+		  else
+		    set arguments
+		  end
 
-  #command grc -es --colour=auto $executable $options $arguments
-  command grc --colour=auto $executable $options $arguments
+		  set optionsvariable "grcplugin_"$executable
+		  set options $$optionsvariable
+
+		  command grc -es --colour=auto $executable $options $arguments
+		end
 end
