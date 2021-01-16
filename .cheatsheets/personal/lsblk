@@ -15,6 +15,6 @@ lsblk --json
 lsblk --list
 lsblk --tree # default view
 
-sudo resize2fs /dev/nvme0n1p1
+$ sudo resize2fs /dev/nvme0n1p1
 
-sudo growpart /dev/nvme0n1 1
+$ sudo growpart /dev/nvme0n1 1
