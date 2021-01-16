@@ -127,7 +127,7 @@ function doIt
 	end
 
 	echo "Installing omf..."
-	#curl -sL https://get.oh-my.fish > install_omf
+	#curl -L https://get.oh-my.fish > install_omf
 	#chmod +x install_omf
 	#./install_omf --noninteractive
 	fish install_omf --noninteractive
@@ -144,7 +144,7 @@ function doIt
 	end
 
 	echo "Installing fisher..."
-	curl -sL https://git.io/fisher | source && fisher update
+	curl -L https://git.io/fisher | source && fisher update
 
 	cd
 	echo "Done!"
@@ -174,8 +174,15 @@ function unDoIt
 
 end
 
+
 if test $opt_param = 'remove'
 	unDoIt
+
+else if test $opt_param = 'resync'
+	set dir .config/fish
+	echo "resyncing directory: $dir/*"
+	rsync -av $DOTDIR/$dir/ ~/$dir/
+
 else
 	doIt
 end

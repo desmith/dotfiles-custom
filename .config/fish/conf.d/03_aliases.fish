@@ -48,6 +48,8 @@ abbr gl 'git log'
 abbr catgit 'cat ./.git/config'
 abbr gitcat 'cat ./.git/config'
 
+abbr _html_ '<html><head><title>Test Page</title></head><body><div align="center" style="margin: 150px;">Just now coming... </div></body>
+</html>'
 # tmux
 abbr t 'tmux'
 abbr tl 'tmux ls'
@@ -100,7 +102,9 @@ abbr .... 'cd ../..'  # up two
 abbr ...... 'cd ../../..'  # up three
 abbr .4 'cd ../../../..'  # up four
 abbr .5 'cd ../../../../..'  # up five
+abbr cdd 'cd $DOTDIR'
 abbr cdf 'cd $FISHDIR'
+abbr ddir 'cd $DOTDIR'
 abbr fdir 'cd $FISHDIR'
 
 abbr l 'ls -la'
