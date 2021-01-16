@@ -65,13 +65,17 @@ abbr desk "cd ~/Desktop"
 abbr down "cd ~/Downloads"
 abbr dots 'cd ~/.dotfiles/'
 
+abbr fsync "$DOTDIR/bootstrap resync"
+
 # quick edits to dot files
 abbr vie '$EDIT_CMD $DOTDIR/.config/fish/conf.d/01_exports.fish'
 abbr vip '$EDIT_CMD $DOTDIR/.config/fish/conf.d/02_paths.fish'
 abbr via '$EDIT_CMD $DOTDIR/.config/fish/conf.d/03_aliases.fish'
+
 abbr funcs '$EDIT_CMD $DOTDIR/.config/fish/functions/'
 abbr fconfig '$EDIT_CMD $DOTDIR/.config/fish/config.fish'
 abbr omfconfig '$EDIT_CMD $DOTDIR/.config/fish/conf.d/omf.fish'
+
 abbr vimrc '$EDIT_CMD $DOTDIR/.config/nvim/init.vim'
 abbr vrc '$EDIT_CMD $DOTDIR/.vimrc'
 abbr vissh '$EDIT_CMD ~/.ssh'
@@ -102,6 +106,7 @@ abbr .... 'cd ../..'  # up two
 abbr ...... 'cd ../../..'  # up three
 abbr .4 'cd ../../../..'  # up four
 abbr .5 'cd ../../../../..'  # up five
+
 abbr cdd 'cd $DOTDIR'
 abbr cdf 'cd $FISHDIR'
 abbr ddir 'cd $DOTDIR'
