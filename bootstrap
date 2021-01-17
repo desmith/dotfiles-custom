@@ -133,9 +133,9 @@ function doIt
 	fish install_omf --noninteractive
 
 	source $HOME/.local/share/omf/init.fish
-	echo "Installing bira theme..."
-	omf install bira
-	omf theme bira
+	#echo "Installing bira theme..."
+	#omf install bira
+	#omf theme bira
 
 	echo "Installing omf plugins:"
 	for plugin in $omf_plugins
