@@ -58,6 +58,7 @@ set dotfiles \
 	.serverlessrc \
 	.sublimelinterrc \
 	.taskrc \
+	.tcshrc \
 	.tmux.conf \
 	.ungitrc \
 	.wgetrc \
