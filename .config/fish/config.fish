@@ -1,8 +1,3 @@
-set -g -x fish_greeting '
-	Hare Krishna Hare Krishna Krishna Hare Hare
-	Hare Rama Hare Rama Rama Rama Hare Hare!
-'
-
 direnv hook fish | source
 
 #omf: load virtualfish with plugins
@@ -26,6 +21,11 @@ fish_vi_key_bindings
 switch (uname)
 
 	case Darwin
+		set -g -x fish_greeting '
+			Hare Krishna Hare Krishna Krishna Hare Hare
+			Hare Rama Hare Rama Rama Rama Hare Hare!
+		'
+
 		if test -d (brew --prefix)"/share/fish/completions"
 			set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
 		end
