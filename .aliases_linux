@@ -50,7 +50,7 @@ alias kU='k -U'
 alias duf='du -skh .[!.]* * | sort -h'
 
 # Hugo
-alias hs "hugo server --disableFastRender --watch -v"
+#alias hs "hugo server --disableFastRender --watch -v"
 
 # To generate a UUID (universally unique identifier) quickly:
 alias uuid="python -c 'import sys,uuid; sys.stdout.write(uuid.uuid4().hex)' | pbcopy && pbpaste && echo"
@@ -206,8 +206,8 @@ alias apache='apache2'
 alias dpsa="docker ps -a"
 alias dcup="docker-compose up"
 alias dcupd="docker-compose up -d"
-alias dcd'docker-compse down'
-alias dcdv='docker-compse down -v'
+alias dcd'docker-compose down'
+alias dcdv='docker-compose down -v'
 
 alias dk='docker '
 alias dkr='dk'

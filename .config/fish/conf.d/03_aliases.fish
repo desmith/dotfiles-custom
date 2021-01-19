@@ -155,6 +155,14 @@ abbr tra 'tree -C -a -L 1' # also list hidden files (think "list all")
 # Extra
 #
 
+# tail apache log
+abbr tferr 'sudo tail -f /var/log/httpd/error_log'
+abbr tfwww 'sudo tail -f /var/log/httpd/www.seizuretracker.com.combinedlog'
+abbr tfapi 'sudo tail -f /var/log/httpd/api.seizuretracker.com.combinedlog'
+
+# tail php log
+abbr tfphp 'sudo tail -f /var/log/php-fpm/www-error.log'
+
 # find and tail all logs in ./
 abbr tails "tail -F (find . -type f -not -name '*.tar' -not -name '*.gz' -not -name '*.zip' -not -path '*.git*' -not -path '*.svn*' -not -path '*node_modules*' | grep -e '/log/' -e '/logs/' -e '\.log')"
 
