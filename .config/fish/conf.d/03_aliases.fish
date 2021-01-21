@@ -65,7 +65,7 @@ abbr desk "cd ~/Desktop"
 abbr down "cd ~/Downloads"
 abbr dots 'cd ~/.dotfiles/'
 
-abbr fsync "$DOTDIR/bootstrap resync"
+abbr fsync "cd $DOTDIR; git checkout trunk; git pull origin trunk; ./bootstrap resync; cd -"
 
 # quick edits to dot files
 abbr vie '$EDIT_CMD $DOTDIR/.config/fish/conf.d/01_exports.fish'
