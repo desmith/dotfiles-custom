@@ -237,7 +237,7 @@ switch (uname)
     abbr ls 'exa '
 
     # Intel Brew (legacy) - m1 brew lives at /opt/homebrew
-    #abbr ibrew 'arch -x86_64 /usr/local/bin/brew'
+    abbr ibrew 'arch -x86_64 /usr/local/bin/brew'
 
 	# homebrew
 	abbr bi 'brew install'
