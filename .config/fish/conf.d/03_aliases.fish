@@ -65,7 +65,7 @@ abbr desk "cd ~/Desktop"
 abbr down "cd ~/Downloads"
 abbr dots 'cd ~/.dotfiles/'
 
-abbr fsync "cd $DOTDIR; git checkout trunk; git pull origin trunk; ./bootstrap resync; cd -"
+abbr fsync "cd $DOTDIR; git checkout trunk; git pull origin trunk; ./bootstrap resync; cd ~"
 
 # quick edits to dot files
 abbr vie '$EDIT_CMD $DOTDIR/.config/fish/conf.d/01_exports.fish'
@@ -236,26 +236,29 @@ switch (uname)
     abbr latr 'exa -la -sold'
     abbr ls 'exa '
 
-		# homebrew
-		abbr bi 'brew install'
-		abbr bri 'brew install'
-		abbr get 'brew install'
-		abbr bs 'brew search'
-		abbr bud 'brew update'
-		abbr bug 'brew upgrade'
-		abbr bd 'brew doctor'
-		abbr bl 'brew list'
-		abbr bu 'brew uninstall'
+    # Intel Brew (legacy) - m1 brew lives at /opt/homebrew
+    abbr ibrew 'arch -x86_64 /usr/local/bin/brew'
 
-		# homebrew cask
-		abbr bci 'brew cask install'
-		abbr bcs 'brew cask search'
-		abbr bcia 'brew cask install --appdir "/Applications"'
-		abbr getapp 'brew cask install --appdir "/Applications"'
+	# homebrew
+	abbr bi 'brew install'
+	abbr bri 'brew install'
+	abbr get 'brew install'
+	abbr bs 'brew search'
+	abbr bud 'brew update'
+	abbr bug 'brew upgrade'
+	abbr bd 'brew doctor'
+	abbr bl 'brew list'
+	abbr bu 'brew uninstall'
 
-		# pianobar (pandora cli)
-		abbr pandora pianobar
-		abbr pb 'pianobar 2>&1 | grep -v API'
+	# homebrew cask
+	abbr bci 'brew cask install'
+	abbr bcs 'brew cask search'
+	abbr bcia 'brew cask install --appdir "/Applications"'
+	abbr getapp 'brew cask install --appdir "/Applications"'
+
+	# pianobar (pandora cli)
+	abbr pandora pianobar
+	abbr pb 'pianobar 2>&1 | grep -v API'
 
 	case Linux
 		abbr pbcopy 'xclip -selection clipboard'

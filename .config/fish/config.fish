@@ -1,4 +1,3 @@
-direnv hook fish | source
 
 #omf: load virtualfish with plugins
 #eval (python -m virtualfish auto_activation compat_aliases global_requirements projects)
@@ -34,3 +33,6 @@ switch (uname)
 		end
 
 end
+
+direnv hook fish | source
+set -agx PATH /opt/homebrew/bin:$PATH

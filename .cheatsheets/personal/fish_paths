@@ -1,0 +1,38 @@
+best practice is to modify the fish_user_paths rather than the global PATH. To avoid ever having to Google this again…
+
+    Create a couple of functions that only modify fish_user_paths
+    Make both functions autoloading
+
+To add to user paths:
+
+function addpaths
+    contains -- $argv $fish_user_paths
+       or set -U fish_user_paths $fish_user_paths $argv
+    echo "Updated PATH: $PATH"
+end
+
+To remove a user path if it exists (partial credit to this):
+
+function removepath
+    if set -l index (contains -i $argv[1] $PATH)
+        set --erase --universal fish_user_paths[$index]
+        echo "Updated PATH: $PATH"
+    else
+        echo "$argv[1] not found in PATH: $PATH"
+    end
+end
+
+And of course, to make them autoloading:
+
+funcsave addpaths; funcsave removepath
+
+Example Usage:
+
+> addpaths /etc /usr/libexec
+Modifying PATH: /usr/local/bin /usr/bin /bin /usr/sbin /sbin
+Updated PATH: /etc /usr/libexec /usr/local/bin /usr/bin /bin /usr/sbin /sbin
+
+> removepath /usr/libexec
+Modifying PATH: /etc /usr/libexec /usr/local/bin /usr/bin /bin /usr/sbin /sbin
+Updated PATH: /etc /usr/local/bin /usr/bin /bin /usr/sbin /sbin
+
