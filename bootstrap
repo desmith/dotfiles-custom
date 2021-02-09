@@ -65,8 +65,7 @@ set dotfiles \
 
 set harddirs \
 	.config \
-
-#	.local
+	.local
 
 set omf_plugins \
 	age \
