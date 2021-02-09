@@ -10,12 +10,7 @@
 
 fish_vi_key_bindings
 
-#test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
-
-#echo "config.fish done"
-
-#set -g fish_user_paths "/usr/local/opt/node@12/bin" $fish_user_paths
-#set -g fish_user_paths "/usr/local/opt/node@14/bin" $fish_user_paths
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
 switch (uname)
 
@@ -25,14 +20,15 @@ switch (uname)
 			Hare Rama Hare Rama Rama Rama Hare Hare!
 		'
 
-		if test -d (brew --prefix)"/share/fish/completions"
-			set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
-		end
-		if test -d (brew --prefix)"/share/fish/vendor_completions.d"
-			set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
-		end
+	if test -d (brew --prefix)"/share/fish/completions"
+		set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
+	end
+	if test -d (brew --prefix)"/share/fish/vendor_completions.d"
+		set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+	end
 
 end
 
 direnv hook fish | source
-set -agx PATH /opt/homebrew/bin:$PATH
+
+echo "config.fish done"
