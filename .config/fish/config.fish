@@ -1,12 +1,7 @@
-
 #omf: load virtualfish with plugins
-#eval (python -m virtualfish auto_activation compat_aliases global_requirements projects)
 
 # status --is-interactive; and source (pyenv init -|psub)
-#source (goenv init - | psub)
-#source (pyenv init - | psub)
-#source (rbenv init - | psub)
-#nvm use node > /dev/null 2>&1
+source (pyenv init - | psub)
 
 fish_vi_key_bindings
 
@@ -30,5 +25,3 @@ switch (uname)
 end
 
 direnv hook fish | source
-
-echo "config.fish done"
