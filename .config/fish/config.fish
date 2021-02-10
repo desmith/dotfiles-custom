@@ -1,5 +1,3 @@
-#omf: load virtualfish with plugins
-
 # status --is-interactive; and source (pyenv init -|psub)
 source (pyenv init - | psub)
 

@@ -7,3 +7,13 @@ for newpath in /opt/homebrew/bin ~/.local/bin ~/bin ~/bin/certs ~/bin/mysql ~/bi
     #set -agx PATH $newpath;
 
 end
+
+switch (uname)
+
+    case Linux 
+        for newpath in /home/ec2-user/.linuxbrew/bin /home/ec2-user/.linuxbrew/sbin ; 
+	    contains -- $newpath $fish_user_paths 
+	        or set -U fish_user_paths $fish_user_paths $newpath
+        end
+
+end
