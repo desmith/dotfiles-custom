@@ -87,8 +87,12 @@ switch (uname)
 	  set -x HOMEBREW_PREFIX $HOME/.linuxbrew
 	  set -x HOMEBREW_CELLAR $HOMEBREW_PREFIX/Cellar
 	  set -x HOMEBREW_REPOSITORY $HOMEBREW_PREFIX/Homebrew
-	  set -x MANPATH $HOMEBREW_PREFIX/share/man:$MANPATH
-	  set -x INFOPATH $HOMEBREW_PREFIX/share/info:$INFOPATH
+
+	  set -q MANPATH || set MANPATH ''
+	  set -gx MANPATH $MANPATH $HOMEBREW_PREFIX/share/man
+
+	  set -q INFOPATH || set INFOPATH ''
+	  set -gx INFOPATH $INFOPATH $HOMEBREW_PREFIX/share/info
 
 	case Darwin
 		source ~/.env-tokens
