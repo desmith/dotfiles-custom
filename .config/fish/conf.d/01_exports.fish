@@ -84,6 +84,11 @@ switch (uname)
 	  set -gx JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64/jre
 	  set -gx EC2_HOME "/usr/local/ec2"
 	  set -gx EDIT_CMD rsub
+	  set -x HOMEBREW_PREFIX "$HOME/.linuxbrew"
+	  set -x HOMEBREW_CELLAR "$HOMEBREW_PREFIX/Cellar"
+	  set -x HOMEBREW_REPOSITORY "$HOMEBREW_PREFIX/Homebrew"
+	  set -x MANPATH "$HOMEBREW_PREFIX/share/man${MANPATH+:$MANPATH}:"
+	  set -x INFOPATH "$HOMEBREW_PREFIX/share/info:${INFOPATH:-}"
 
 	case Darwin
 		source ~/.env-tokens
