@@ -25,6 +25,18 @@ abbr awspi 'aws --profile adminuser-icg'
 abbr awsync 'aws s3 sync --exclude "*.DS_Store*" ./'
 abbr get_aws_acct 'aws sts get-caller-identity --query Account --output text'
 
+# AWS EC2
+abbr ec2-imedia 'aws ec2 --profile ICGAdmin start-instances --instance-ids i-047750e6388e64159'
+abbr ec2-imedia-ip 'aws ec2 --profile ICGAdmin describe-instances --instance-ids i-047750e6388e64159 --output json | jq .Reservations[].Instances[].NetworkInterfaces[].PrivateIpAddresses[].PrivateIpAddress -r'
+
+abbr ec2-ct-das-dev 'aws ec2 --profile dsmith-dev start-instances --instance-ids i-078d1183fb0710966'
+abbr ec2-ct-test 'aws ec2 --profile dsmith-test start-instances --instance-ids i-'
+abbr ec2-ct-stage 'aws ec2 --profile dsmith-stage start-instances --instance-ids '
+
+abbr ec2-sviz-das-dev 'aws ec2 --profile dsmith-sviz start-instances --instance-ids i-089a79335f138c95d'
+abbr ec2-sviz-test 'aws ec2 --profile dsmith-sviz start-instances --instance-ids i-0f778a3fda2c57d44'
+abbr ec2-sviz-stage 'aws ec2 --profile dsmith-sviz start-instances --instance-ids i-04ec2173ba1e689a1'
+
 # git
 abbr g git
 abbr gs 'git status'

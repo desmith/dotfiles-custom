@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+openssl rsa -in key.pem -pubout > key.pub
