@@ -81,12 +81,10 @@ set -gx LESS '-F -g -i -M -R -S -w -X -z-4'
 
 switch (uname)
 	case Linux
-	  #set -gx JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64/jre
-	  #set -gx EC2_HOME /usr/local/ec2
 	  set -gx EDIT_CMD rsub
-	  set -x HOMEBREW_PREFIX /home/linuxbrew
-	  set -x HOMEBREW_CELLAR $HOMEBREW_PREFIX/Cellar
-	  set -x HOMEBREW_REPOSITORY $HOMEBREW_PREFIX/Homebrew
+	  set -gx HOMEBREW_PREFIX /home/linuxbrew/.linuxbrew
+	  set -gx HOMEBREW_CELLAR $HOMEBREW_PREFIX/Cellar
+	  set -gx HOMEBREW_REPOSITORY $HOMEBREW_PREFIX/Homebrew
 
 	  set -q MANPATH || set MANPATH ''
 	  set -gx MANPATH $MANPATH $HOMEBREW_PREFIX/share/man
@@ -102,7 +100,7 @@ switch (uname)
 		set -gx BROWSER open
 		set -gx EDIT_CMD code
 
-        source ~/bin/pyenv_libs
+        	#source ~/bin/set_pyenv_libs
 
 	case FreeBSD NetBSD DragonFly
 		echo FreeBSD NetBSD DragonFly
