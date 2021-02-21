@@ -353,8 +353,6 @@ alias find_spam='grep -r "eval(gzinflate(base64_decode" * '
 alias find_spam='echo "looking for nasty stuff..."; grep -r "eval(gzinflate(base64_decode" * '
 
 
-# Enable aliases to be sudo’ed
-
 # Get week number
 alias week='date +%V'
 

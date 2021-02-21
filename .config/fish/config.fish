@@ -1,5 +1,5 @@
 # status --is-interactive; and source (pyenv init -|psub)
-source (pyenv init - | psub)
+#source (pyenv init - | psub)
 
 fish_vi_key_bindings
 
