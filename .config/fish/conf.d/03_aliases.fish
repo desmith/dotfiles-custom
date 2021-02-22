@@ -240,37 +240,38 @@ switch (uname)
 	case Darwin
 		# create ssh tunnel for accessing phpMyAdmin on un.iskcon.org
 		abbr ssh-tunnel-pma.un.iskcon.org 'echo "visit https://127.0.0.1:8888/phpmyadmin"; ssh -N -L 8888:127.0.0.1:443 -i IC-un.pem  bitnami@un.iskcon.org'
+		abbr ssh-tunnel-pma.dev.iskcon.org 'echo "visit https://127.0.0.1:8889/phpmyadmin"; ssh -N -L 8889:127.0.0.1:443 -i ~/.ssh/icg/IC-Org.pem  bitnami@dev.iskcon.org'
 
 		abbr sshconf 'subl ~/.ssh'
 
-    abbr l 'exa -l'
-    abbr la 'exa -la'
-    abbr latr 'exa -la -sold'
-    abbr ls 'exa '
+        abbr l 'exa -l'
+        abbr la 'exa -la'
+        abbr latr 'exa -la -sold'
+        abbr ls 'exa '
 
     # Intel Brew (legacy) - m1 brew lives at /opt/homebrew
-    abbr ibrew 'arch -x86_64 /usr/local/bin/brew'
+        abbr ibrew 'arch -x86_64 /usr/local/bin/brew'
 
-	# homebrew
-	abbr bi 'brew install'
-	abbr bri 'brew install'
-	abbr get 'brew install'
-	abbr bs 'brew search'
-	abbr bud 'brew update'
-	abbr bug 'brew upgrade'
-	abbr bd 'brew doctor'
-	abbr bl 'brew list'
-	abbr bu 'brew uninstall'
+        # homebrew
+        abbr bi 'brew install'
+        abbr bri 'brew install'
+        abbr get 'brew install'
+        abbr bs 'brew search'
+        abbr bud 'brew update'
+        abbr bug 'brew upgrade'
+        abbr bd 'brew doctor'
+        abbr bl 'brew list'
+        abbr bu 'brew uninstall'
 
-	# homebrew cask
-	abbr bci 'brew cask install'
-	abbr bcs 'brew cask search'
-	abbr bcia 'brew cask install --appdir "/Applications"'
-	abbr getapp 'brew cask install --appdir "/Applications"'
+        # homebrew cask
+        abbr bci 'brew cask install'
+        abbr bcs 'brew cask search'
+        abbr bcia 'brew cask install --appdir "/Applications"'
+        abbr getapp 'brew cask install --appdir "/Applications"'
 
-	# pianobar (pandora cli)
-	abbr pandora pianobar
-	abbr pb 'pianobar 2>&1 | grep -v API'
+        # pianobar (pandora cli)
+        abbr pandora pianobar
+        abbr pb 'pianobar 2>&1 | grep -v API'
 
 	case Linux
 		abbr pbcopy 'xclip -selection clipboard'
