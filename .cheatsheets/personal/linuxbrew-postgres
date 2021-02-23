@@ -1,0 +1,31 @@
+To migrate existing data from a previous major version of PostgreSQL run:
+  brew postgresql-upgrade-database
+
+This formula has created a default database cluster with:
+  initdb --locale=C -E UTF-8 /home/linuxbrew/.linuxbrew/var/postgres
+
+For more details, read:
+  https://www.postgresql.org/docs/13/app-initdb.html
+
+Warning: postgresql provides a launchd plist which can only be used on macOS!
+You can manually execute the service instead with:
+  pg_ctl -D /home/linuxbrew/.linuxbrew/var/postgres start
+
+==> python@3.9
+Python has been installed as
+  /home/linuxbrew/.linuxbrew/bin/python3
+
+Unversioned symlinks `python`, `python-config`, `pip` etc. pointing to
+`python3`, `python3-config`, `pip3` etc., respectively, have been installed into
+  /home/linuxbrew/.linuxbrew/opt/python@3.9/libexec/bin
+
+You can install Python packages with
+  pip3 install <package>
+They will install into the site-package directory
+  /home/linuxbrew/.linuxbrew/lib/python3.9/site-packages
+
+See: https://docs.brew.sh/Homebrew-and-Python
+
+Bash completion has been installed to:
+  /home/linuxbrew/.linuxbrew/etc/bash_completion.d
+
