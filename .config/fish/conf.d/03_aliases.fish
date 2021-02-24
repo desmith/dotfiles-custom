@@ -240,7 +240,8 @@ switch (uname)
 	case Darwin
 		# create ssh tunnel for accessing phpMyAdmin on un.iskcon.org
 		abbr ssh-tunnel-pma.un.iskcon.org 'echo "visit https://127.0.0.1:8888/phpmyadmin"; ssh -N -L 8888:127.0.0.1:443 -i ~/.ssh/icg/IC-un.pem  bitnami@un.iskcon.org'
-		abbr ssh-tunnel-pma.dev.iskcon.org 'echo "visit https://127.0.0.1:8889/phpmyadmin"; ssh -N -L 8889:127.0.0.1:443 -i ~/.ssh/icg/IC-Org-Lightsail.pem  bitnami@dev.iskcon.org'
+		#abbr ssh-tunnel-pma.dev.iskcon.org 'echo "visit https://127.0.0.1:8888/phpmyadmin"; ssh -N -L 8888:127.0.0.1:443 -i ~/.ssh/icg/IC-Org-Lightsail.pem  bitnami@dev.iskcon.org'
+		abbr ssh-tunnel-pma.dev.iskcon.org 'echo "visit https://127.0.0.1:8888/phpmyadmin"; ssh -N -L 8888:127.0.0.1:443 -i ~/.ssh/icg/IC-Org-ec2.pem  bitnami@dev.iskcon.org'
 
 		abbr sshconf 'subl ~/.ssh'
 
