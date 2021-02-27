@@ -1,5 +1,6 @@
 awscli
 boto3
 botocore
+black
 pip-tools
-virtualfish
+s3transfer

@@ -29,13 +29,14 @@ abbr get_aws_acct 'aws sts get-caller-identity --query Account --output text'
 abbr ec2-imedia 'aws ec2 --profile ICGAdmin start-instances --instance-ids i-047750e6388e64159'
 #abbr ec2-imedia-ip 'aws ec2 --profile ICGAdmin describe-instances --instance-ids i-047750e6388e64159 --output json | jq .Reservations[].Instances[].NetworkInterfaces[].PrivateIpAddresses[].PrivateIpAddress -r'
 
-abbr ec2-ct-das-dev 'aws ec2 --profile dsmith-dev start-instances --instance-ids i-078d1183fb0710966'
-abbr ec2-ct-test 'aws ec2 --profile dsmith-test start-instances --instance-ids i-07c8de8d0d311ec3d'
-abbr ec2-ct-stage 'aws ec2 --profile dsmith-stage start-instances --instance-ids i-09888ca4706d50d0e'
+abbr ec2-start-ct-das-dev 'aws ec2 --profile dsmith-dev start-instances --instance-ids i-078d1183fb0710966'
+abbr ec2-start-ct-stage 'aws ec2 --profile dsmith-stage start-instances --instance-ids i-09888ca4706d50d0e'
+abbr ec2-start-ct-test 'aws ec2 --profile dsmith-test start-instances --instance-ids i-07c8de8d0d311ec3d'
+abbr ec2-start-ct-uidev 'aws ec2 --profile dsmith-dev start-instances --instance-ids i-0ec8c010f2cf7fa84'
 
-abbr ec2-sviz-das-dev 'aws ec2 --profile dsmith-sviz start-instances --instance-ids i-089a79335f138c95d'
-abbr ec2-sviz-test 'aws ec2 --profile dsmith-sviz start-instances --instance-ids i-0f778a3fda2c57d44'
-abbr ec2-sviz-stage 'aws ec2 --profile dsmith-sviz start-instances --instance-ids i-04ec2173ba1e689a1'
+abbr ec2-start-sviz-das-dev 'aws ec2 --profile dsmith-sviz start-instances --instance-ids i-089a79335f138c95d'
+abbr ec2-start-start-sviz-test 'aws ec2 --profile dsmith-sviz start-instances --instance-ids i-0f778a3fda2c57d44'
+abbr ec2-start-sviz-stage 'aws ec2 --profile dsmith-sviz start-instances --instance-ids i-04ec2173ba1e689a1'
 
 # git
 abbr g git
@@ -246,10 +247,10 @@ switch (uname)
 
         abbr l 'exa -l'
         abbr la 'exa -la'
-        abbr latr 'exa -la -sold'
+        abbr latr 'exa -la -sold --reverse'
         abbr ls 'exa '
 
-    # Intel Brew (legacy) - m1 brew lives at /opt/homebrew
+        # Intel Brew (legacy) - m1 brew lives at /opt/homebrew
         abbr ibrew 'arch -x86_64 /usr/local/bin/brew'
 
         # homebrew
@@ -273,7 +274,10 @@ switch (uname)
         abbr pandora pianobar
         abbr pb 'pianobar 2>&1 | grep -v API'
 
-	case Linux
-		abbr pbcopy 'xclip -selection clipboard'
-		abbr pbpaste 'xclip -selection clipboard -o'
+        abbr via 'subl $DOTDIR/.config/fish/conf.d/03_aliases.fish; cd $DOTDIR; git checkout trunk; git pull origin trunk; ./bootstrap resync; cd ~'
+        abbr viA 'subl $DOTDIR/.config/fish/conf.d/03_aliases.fish; cd $DOTDIR; git checkout trunk; git pull origin trunk; ./bootstrap resync; cd ~'
+
+    case Linux
+        abbr pbcopy 'xclip -selection clipboard'
+        abbr pbpaste 'xclip -selection clipboard -o'
 end
