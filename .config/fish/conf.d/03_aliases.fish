@@ -23,20 +23,21 @@ abbr pyenv-install 'curl https://pyenv.run | bash'
 abbr awspg 'aws --profile adminuser-govardhana'
 abbr awspi 'aws --profile adminuser-icg'
 abbr awsync 'aws s3 sync --exclude "*.DS_Store*" ./'
-abbr get_aws_acct 'aws sts get-caller-identity --query Account --output text'
+abbr aws-current-acct 'aws sts get-caller-identity --query Account --output text'
+abbr aws-get-acct aws-current-acct
 
 # AWS EC2
-abbr ec2-imedia 'aws ec2 --profile ICGAdmin start-instances --instance-ids i-047750e6388e64159'
+abbr ec2-imedia 'aws ec2 --profile ICGAdmin start-instances --region us-east-1 --instance-ids i-047750e6388e64159'
 #abbr ec2-imedia-ip 'aws ec2 --profile ICGAdmin describe-instances --instance-ids i-047750e6388e64159 --output json | jq .Reservations[].Instances[].NetworkInterfaces[].PrivateIpAddresses[].PrivateIpAddress -r'
 
-abbr ec2-start-ct-das-dev 'aws ec2 --profile dsmith-dev start-instances --instance-ids i-078d1183fb0710966'
-abbr ec2-start-ct-stage 'aws ec2 --profile dsmith-stage start-instances --instance-ids i-09888ca4706d50d0e'
-abbr ec2-start-ct-test 'aws ec2 --profile dsmith-test start-instances --instance-ids i-07c8de8d0d311ec3d'
-abbr ec2-start-ct-uidev 'aws ec2 --profile dsmith-dev start-instances --instance-ids i-0ec8c010f2cf7fa84'
+abbr ec2-start-ct-das-dev 'aws ec2 --profile dsmith-dev --region us-east-1 start-instances --instance-ids i-078d1183fb0710966'
+abbr ec2-start-ct-stage 'aws ec2 --profile dsmith-stage --region us-east-1 start-instances --instance-ids i-09888ca4706d50d0e'
+abbr ec2-start-ct-test 'aws ec2 --profile dsmith-test --region us-east-1 start-instances --instance-ids i-07c8de8d0d311ec3d'
+abbr ec2-start-ct-uidev 'aws ec2 --profile dsmith-dev --region us-east-1 start-instances --instance-ids i-0ec8c010f2cf7fa84'
 
-abbr ec2-start-sviz-das-dev 'aws ec2 --profile dsmith-sviz start-instances --instance-ids i-089a79335f138c95d'
-abbr ec2-start-start-sviz-test 'aws ec2 --profile dsmith-sviz start-instances --instance-ids i-0f778a3fda2c57d44'
-abbr ec2-start-sviz-stage 'aws ec2 --profile dsmith-sviz start-instances --instance-ids i-04ec2173ba1e689a1'
+abbr ec2-start-sviz-das-dev 'aws ec2 --profile dsmith-sviz --region us-east-1 start-instances --instance-ids i-089a79335f138c95d'
+abbr ec2-start-start-sviz-test 'aws ec2 --profile dsmith-sviz --region us-east-1 start-instances --instance-ids i-0f778a3fda2c57d44'
+abbr ec2-start-sviz-stage 'aws ec2 --profile dsmith-sviz --region us-east-1 start-instances --instance-ids i-04ec2173ba1e689a1'
 
 # git
 abbr g git
