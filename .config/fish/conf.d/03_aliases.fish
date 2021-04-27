@@ -24,7 +24,8 @@ abbr awspg 'aws --profile adminuser-govardhana'
 abbr awspi 'aws --profile adminuser-icg'
 abbr awsync 'aws s3 sync --exclude "*.DS_Store*" ./'
 abbr aws-current-acct 'aws sts get-caller-identity --query Account --output text'
-abbr aws-get-acct aws-current-acct
+abbr aws-get-acct 'aws sts get-caller-identity --query Account --output text'
+abbr awsacct 'aws sts get-caller-identity --query Account --output text'
 
 # AWS EC2
 abbr ec2-imedia 'aws ec2 --profile ICGAdmin start-instances --region us-east-1 --instance-ids i-047750e6388e64159'
