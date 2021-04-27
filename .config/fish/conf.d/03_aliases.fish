@@ -121,7 +121,7 @@ abbr ...... 'cd ../../..'  # up three
 abbr .4 'cd ../../../..'  # up four
 abbr .5 'cd ../../../../..'  # up five
 
-abbr cdd 'cd $DOTDIR'
+abbr cdot 'cd $DOTDIR'
 abbr cdf 'cd $FISHDIR'
 abbr ddir 'cd $DOTDIR'
 abbr fdir 'cd $FISHDIR'
