@@ -1,0 +1,54 @@
+# To implement a for loop:
+for file in *;
+do 
+    echo $file found;
+done
+
+# To implement a case command:
+case "$1"
+in
+    0) echo "zero found";;
+    1) echo "one found";;
+    2) echo "two found";;
+    3*) echo "something beginning with 3 found";;
+esac
+
+# To turn on debugging:
+set -x
+
+# To turn off debugging:
+set +x
+
+# Retrieve N-th piped command exit status:
+printf 'foo' | fgrep 'foo' | sed 's/foo/bar/'
+echo ${PIPESTATUS[0]}  # replace 0 with N
+
+# To create a lockfile:
+( set -o noclobber; echo > my.lock ) || echo 'Failed to create lock file'
+
+# Always use this syntax on your variables:
+rm -rf /${somedir:?}
+
+# The :? checks if the variable exists and is set. Otherwise, it will crap out and exit the script.
+
+# One-liner if statements:
+[ ! $? -eq 0 ] && { echo "error with rsync"; exit 1; } 
+
+# The {} braces are basically your then statements separated by ;.
+
+# You can also chain multiple conditions in a one-liner:
+[[ -z "${v1}" && -z "${v2}" ]] && { echo "need v1 and v2"; exit 1; }
+
+# Validate that positional arguments have been passed
+name=${1:?"Error: parameter missing Name"}
+age=${2:?"Error: parameter missing Age"}
+
+# This will error out with the param message if an argument is missing:
+
+
+# One-liner for default value
+echo "enter your name"
+read name
+name=${name:-Unknown}
+
+# If a user enters blank, your $name will be set to Unknown. The dash after the colon provides a default fallback value.
