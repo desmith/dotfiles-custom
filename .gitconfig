@@ -178,6 +178,7 @@ longpaths = true
 	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 [init]
 	templateDir = ~/.git-templates/git-secrets
+	defaultBranch = trunk
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
