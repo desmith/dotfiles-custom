@@ -1,0 +1,3 @@
+# Copy-Paste Files From One Folder to Another
+
+ditto [original_folder][new_folder]
