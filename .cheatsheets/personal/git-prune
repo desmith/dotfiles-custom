@@ -1,0 +1,6 @@
+# Remove all stale branches. 
+git remote prune origin
+
+# That's probably what you'd want in most cases, 
+# but if you want to just remove a particular remote-tracking branch:
+git branch -d -r origin/coolbranch
