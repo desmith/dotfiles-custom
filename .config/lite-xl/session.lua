@@ -1,1 +1,1 @@
-return {recents={}, window={[1]=2048,[2]=1152,[3]=256,[4]=144,["n"]=4}}
+return {recents={[1]="/Users/devaprastha/tmp"}, window={[1]=1344,[2]=840,[3]=168,[4]=105,["n"]=4}, window_mode="normal"}

@@ -1,1 +1,1 @@
-return { path = "/", documents = {["type"]="leaf",["views"]={}}, directories = {} }
+return { path = "", documents = {["type"]="leaf",["views"]={}}, directories = {} }

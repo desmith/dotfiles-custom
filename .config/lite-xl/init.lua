@@ -21,8 +21,8 @@ local style = require "core.style"
 ------------------------------- Fonts ----------------------------------------
 
 -- customize fonts:
--- style.font = renderer.font.load(DATADIR .. "/fonts/font.ttf", 13 * SCALE)
--- style.code_font = renderer.font.load(DATADIR .. "/fonts/monospace.ttf", 12 * SCALE)
+-- style.font = renderer.font.load(DATADIR .. "/fonts/FiraSans-Regular.ttf", 13 * SCALE)
+-- style.code_font = renderer.font.load(DATADIR .. "/fonts/JetBrainsMono-Regular.ttf", 13 * SCALE)
 --
 -- font names used by lite:
 -- style.font          : user interface
@@ -43,8 +43,8 @@ local style = require "core.style"
 
 -- enable or disable plugin loading setting config entries:
 
--- enable trimwhitespace, otherwise it is disable by default:
-config.trimwhitespace = true
+-- enable plugins.trimwhitespace, otherwise it is disable by default:
+-- config.plugins.trimwhitespace = true
 --
 -- disable detectindent, otherwise it is enabled by default
--- config.detectindent = false
+-- config.plugins.detectindent = false
